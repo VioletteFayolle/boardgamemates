@@ -1,0 +1,16 @@
+.btn-action {
+  display: flex;
+  position: fixed;
+  bottom: 3.5vw;
+  right: 3.5vw;
+  height: 16vw;
+  width: 16vw;
+  color: black;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+  }
+}
