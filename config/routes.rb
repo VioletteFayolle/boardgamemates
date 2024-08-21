@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :events, only: %i[index show new create], path: "évènements"
 
+  devise_for :users
+  root to: "pages#home"
+
+  resources :users, only: %i[show edit update], path: "profile"
   # Defines the root path route ("/")
   # root "posts#index"
 end
