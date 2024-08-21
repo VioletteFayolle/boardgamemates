@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
     @events = Event.all
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -10,10 +15,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.creator = current_user
     if @event.save
       redirect_to events_path
     else
-      render :event
+      render :new, status: :unprocessable_entity, locals: { vehicule: @vehicule }
     end
 
   end
@@ -21,7 +27,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :date)
+    params.require(:event).permit(:title, :description, :location, :date, :capacity)
   end
 
 end

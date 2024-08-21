@@ -2,6 +2,9 @@
   <%= f.input :title %>
   <%= f.input :description, as: :text %>
   <%= f.input :location %>
+  <%= f.input :capacity,
+              as: :integer,
+              input_html: { min: 1, type: "number" } %>
   <%= f.input :date,
               as: :string,
               input_html: { data: { controller: "datepicker" } } %>
