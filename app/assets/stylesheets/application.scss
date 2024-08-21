@@ -10,3 +10,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+@import "components/banner";
+@import "components/card-category";
+@import "components/h1";
+
+
+.bgm-container {
+  margin: auto;
+  width: 90vw;
+}
+
+.link_to {
+  text-decoration: none;
+}
+
+body {
+  background-color: rgb(255, 246, 237);
+}

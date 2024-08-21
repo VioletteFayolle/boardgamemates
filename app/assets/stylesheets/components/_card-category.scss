@@ -1,0 +1,48 @@
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8vh;
+  margin: 8vh 0;
+  padding-left: 8vh;
+  padding-right: 8vh;
+}
+
+#plateau {
+  background-image: url('boardgame_mates_banner');
+}
+
+#cartes {
+  background-image: url('boardgame_mates_banner');
+}
+
+#stratégie {
+  background-image: url('boardgame_mates_banner');
+}
+
+#rôle {
+  background-image: url('boardgame_mates_banner');
+}
+
+#coopération {
+  background-image: url('boardgame_mates_banner');
+}
+
+#ambiance {
+  background-image: url('boardgame_mates_banner');
+}
