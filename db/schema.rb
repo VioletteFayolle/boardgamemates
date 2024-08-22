@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_21_150330) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_22_084722) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boardgames", force: :cascade do |t|
+    t.integer "bgg_id"
+    t.string "name"
+    t.string "description"
+    t.string "image_url"
+    t.string "thumbnail_url"
+    t.integer "min_players"
+    t.integer "max_players"
+    t.integer "playing_time"
+    t.integer "age"
+    t.string "category"
+    t.integer "release_year"
+    t.string "publisher"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "boardgames_lists", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "boardgames_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boardgames_id"], name: "index_boardgames_lists_on_boardgames_id"
+    t.index ["event_id"], name: "index_boardgames_lists_on_event_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -25,6 +51,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_150330) do
     t.integer "capacity"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "inscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.string "status"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_inscriptions_on_event_id"
+    t.index ["user_id"], name: "index_inscriptions_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.string "status"
+    t.string "content"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_messages_on_event_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,5 +94,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_150330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boardgames_lists", "boardgames", column: "boardgames_id"
+  add_foreign_key "boardgames_lists", "events"
   add_foreign_key "events", "users"
+  add_foreign_key "inscriptions", "events"
+  add_foreign_key "inscriptions", "users"
+  add_foreign_key "messages", "events"
+  add_foreign_key "messages", "users"
 end
