@@ -24,6 +24,10 @@ class EventsController < ApplicationController
 
   end
 
+  def chat
+
+  end
+
   private
 
   def event_params
