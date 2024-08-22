@@ -17,10 +17,7 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 8vh;
-  margin: 8vh 0;
-  padding-left: 8vh;
-  padding-right: 8vh;
+  grid-gap: 2vh;
 }
 
 #plateau {

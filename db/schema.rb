@@ -33,10 +33,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_084722) do
 
   create_table "boardgames_lists", force: :cascade do |t|
     t.bigint "event_id", null: false
-    t.bigint "boardgames_id", null: false
+    t.bigint "boardgame_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["boardgames_id"], name: "index_boardgames_lists_on_boardgames_id"
+    t.index ["boardgame_id"], name: "index_boardgames_lists_on_boardgame_id"
     t.index ["event_id"], name: "index_boardgames_lists_on_event_id"
   end
 
@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_084722) do
     t.string "title"
     t.string "description"
     t.string "location"
+    t.integer "capacity"
     t.date "date"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "capacity"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_084722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "boardgames_lists", "boardgames", column: "boardgames_id"
+  add_foreign_key "boardgames_lists", "boardgames"
   add_foreign_key "boardgames_lists", "events"
   add_foreign_key "events", "users"
   add_foreign_key "inscriptions", "events"
