@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "/profil/mes-évènements", to: 'users#évènements', as: "mes-evenements"
 
 
-  resources :users, only: %i[show edit update], path: "profil"
+  resources :users, only: %i[show edit update], path: "profil", param: :username
 
   resources :events, only: %i[index show new create], path: "évènements" do
     resources :inscriptions, only: %i[create], path: "inscription"
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :boardgames_lists, only: %i[create], path: "boardgames"
   end
 
-  resources :boardgames, only: %i[index show], path: "jeux-de-société"
+  resources :boardgames, only: %i[index show], path: "jeu-de-société", param: :name
 
 
 

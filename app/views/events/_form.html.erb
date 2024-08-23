@@ -1,15 +1,21 @@
 <%= simple_form_for @event do |f| %>
   <%= f.input :title,
               label: "Titre" %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :location,
-              label: "Ville" %>
+  <%= f.input :description,
+              as: :text %>
   <%= f.input :capacity,
+              label: "Nombre de places",
               as: :integer,
               input_html: { min: 1, type: "number" } %>
   <%= f.input :date,
               as: :string,
               input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :address,
+              label: "Adresse" %>
+  <%= f.input :city,
+              label: "Ville" %>
+  <%= f.input :zip_code,
+              label: "Code postal" %>
 
   <%= f.button :submit %>
 <% end %>

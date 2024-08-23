@@ -9,11 +9,8 @@
 #   end
 
 User.destroy_all
-Event.destroy_all
-Inscription.destroy_all
-Message.destroy_all
+
 Boardgame.destroy_all
-BoardgamesList.destroy_all
 
 puts 'Creating Users'
 
@@ -24,9 +21,9 @@ puts 'Users created'
 
 puts 'Creating Events'
 # passé
-event1 = Event.create!(title: 'Event 1', description: 'Description 1', city: "Lille", address: "Rue de la monnaie", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
+Event.create!(title: 'Event 1', description: 'Description 1', city: "Lille", address: "Rue de la monnaie", zip_code: "59000", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
 # a venir
-event2 =Event.create!(title: 'Event 2', description: 'Description 1', city: "Roubaix", address: "12 Grande rue", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
+event2 = Event.create!(title: 'Event 2', description: 'Description 2', city: "Roubaix", address: "12 Grande rue", zip_code: "59100", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 
@@ -38,8 +35,8 @@ puts 'Inscriptions created'
 
 puts 'Creating Messages'
 
-Message.create!(event: Event.last, user: User.first, content: 'Content 1');
-Message.create!(event: Event.last, user: User.last, content: 'Content 2');
+Message.create!(event: Event.last, user: User.first, content: 'Content 1')
+Message.create!(event: Event.last, user: User.last, content: 'Content 2')
 
 puts 'Messages created'
 
@@ -526,9 +523,9 @@ puts 'Boardgames created'
 
 puts 'Creating Boardgames_lists'
 
-BoardgamesList.create!(event: Event.first, boardgame: board1);
-BoardgamesList.create!(event: Event.first, boardgame: board2);
-BoardgamesList.create!(event: Event.first, boardgame: board3);
-BoardgamesList.create!(event: Event.first, boardgame: board4);
+BoardgamesList.create!(event: Event.first, boardgame: board1)
+BoardgamesList.create!(event: Event.first, boardgame: board2)
+BoardgamesList.create!(event: Event.first, boardgame: board3)
+BoardgamesList.create!(event: Event.first, boardgame: board4)
 
 puts 'Boardgames_lists created'

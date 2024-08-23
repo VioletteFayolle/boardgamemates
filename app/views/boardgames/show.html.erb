@@ -1,0 +1,24 @@
+<div class="banner">
+  <div class="bgm-container">
+    <div>
+      <h1><%= @boardgame.name %></h1>
+      <p><%= @boardgame.description %></p>
+      <%= link_to "Ajouter à mes jeux préférés", "profil_path", class: "btn-banner"%>
+    </div>
+  </div>
+</div>
+
+<div class="bgm-container">
+  <div class="card-category" id="game-cat">
+    <h3><%= @boardgame.category %></h3>
+  </div>
+</div>
+
+  <ul>
+    <li><p>Nombre de joueurs : <%=@boardgame.min_players %> - <%= @boardgame.max_players %></p></li>
+    <li><p>Temps de jeu moyen : <%= @boardgame.playing_time %> minutes</p></li>
+    <li><p>Age minimum recommandé : <%= @boardgame.age %> ans</p></li>
+    <li><p>Date de sortie : <%= @boardgame.release_year %></p></li>
+    <li><p>Editeur : <%= @boardgame.publisher %></p></li>
+  </ul>
+</div>
