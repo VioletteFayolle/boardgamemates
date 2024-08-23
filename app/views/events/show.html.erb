@@ -5,12 +5,29 @@
       <p><%= @event.description %></p>
     </div>
     <div>
-      <% if current_user != @event.creator %>
-
+      <% if current_user != @event.creator && @event.participants.include?(current_user) == false %>
         <% if user_signed_in? %>
+            <div data-controller="toggle">
+              <%= link_to "Rejoindre", "#", data: { action: "click->toggle#display" }, class: "btn-banner" %>
 
-          <%= link_to "Rejoindre", "#", data: { action: "click->toggle#display" }, class: "btn-banner" %>
+              <div data-toggle-target="modal" class="modal hidden">
+                <div class="modal-content">
+                  <span data-action="click->toggle#close" class="close-button">&times;</span>
+                  <h2>S'inscrire à l'événement</h2>
 
+                  <%= form_with model: @inscription, url: event_inscriptions_path(@event), local: true do |f| %>
+                    <div class="form-inputs">
+                      <%= f.text_area :comment, placeholder: "Écrivez un commentaire..." %>
+                      <%= f.hidden_field :user_id, value: current_user.id %>
+                    </div>
+
+                    <div class="form-actions">
+                      <%= f.submit "S'inscrire", class: "btn-submit" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
         <% else %>
           <%= link_to "Rejoindre", new_user_session_path, class: "btn-banner" %>
         <% end %>

@@ -1,9 +1,14 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["modal"];
 
   display() {
-    this.contentTarget.classList.toggle("hidden");
+    event.preventDefault();
+    this.modalTarget.classList.remove("hidden");
+  }
+
+  close() {
+    this.modalTarget.classList.add("hidden");
   }
 }
