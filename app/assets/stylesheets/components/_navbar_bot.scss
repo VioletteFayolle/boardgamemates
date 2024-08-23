@@ -1,0 +1,15 @@
+.navbar-bgm-bot {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(255, 237, 218);
+  height: 7vh;
+  width: 100%;
+
+  img {
+    width: 5vh;
+  }
+
+}

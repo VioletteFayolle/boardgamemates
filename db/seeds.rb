@@ -9,37 +9,34 @@
 #   end
 
 User.destroy_all
-Event.destroy_all
-Inscription.destroy_all
-Message.destroy_all
+
 Boardgame.destroy_all
-BoardgamesList.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0);
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0);
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0)
 
 puts 'Users created'
 
 puts 'Creating Events'
 # passé
-event1 = Event.create!(title: 'Event 1', description: 'Description 1', location: 'Location 1', date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first);
+Event.create!(title: 'Event 1', description: 'Description 1', city: "Lille", address: "Rue de la monnaie", zip_code: "59000", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
 # a venir
-event2 =Event.create!(title: 'Event 2', description: 'Description 1', location: 'Location 1', date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last);
+event2 = Event.create!(title: 'Event 2', description: 'Description 2', city: "Roubaix", address: "12 Grande rue", zip_code: "59100", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 
 puts 'Creating Inscriptions'
 
-Inscription.create!(user: User.first, event: event2, comment: 'Comment 1', status: 'En attente');
+Inscription.create!(user: User.first, event: event2, comment: 'Comment 1', status: 'En attente')
 
 puts 'Inscriptions created'
 
 puts 'Creating Messages'
 
-Message.create!(event: Event.last, user: User.first, content: 'Content 1');
-Message.create!(event: Event.last, user: User.last, content: 'Content 2');
+Message.create!(event: Event.last, user: User.first, content: 'Content 1')
+Message.create!(event: Event.last, user: User.last, content: 'Content 2')
 
 puts 'Messages created'
 
@@ -526,9 +523,9 @@ puts 'Boardgames created'
 
 puts 'Creating Boardgames_lists'
 
-BoardgamesList.create!(event: Event.first, boardgame: board1);
-BoardgamesList.create!(event: Event.first, boardgame: board2);
-BoardgamesList.create!(event: Event.first, boardgame: board3);
-BoardgamesList.create!(event: Event.first, boardgame: board4);
+BoardgamesList.create!(event: Event.first, boardgame: board1)
+BoardgamesList.create!(event: Event.first, boardgame: board2)
+BoardgamesList.create!(event: Event.first, boardgame: board3)
+BoardgamesList.create!(event: Event.first, boardgame: board4)
 
 puts 'Boardgames_lists created'
