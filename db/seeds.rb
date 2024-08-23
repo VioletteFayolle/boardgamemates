@@ -17,22 +17,22 @@ BoardgamesList.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0);
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0);
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0)
 
 puts 'Users created'
 
 puts 'Creating Events'
 # passé
-event1 = Event.create!(title: 'Event 1', description: 'Description 1', location: 'Location 1', date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first);
+event1 = Event.create!(title: 'Event 1', description: 'Description 1', city: "Lille", address: "Rue de la monnaie", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
 # a venir
-event2 =Event.create!(title: 'Event 2', description: 'Description 1', location: 'Location 1', date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last);
+event2 =Event.create!(title: 'Event 2', description: 'Description 1', city: "Roubaix", address: "12 Grande rue", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 
 puts 'Creating Inscriptions'
 
-Inscription.create!(user: User.first, event: event2, comment: 'Comment 1', status: 'En attente');
+Inscription.create!(user: User.first, event: event2, comment: 'Comment 1', status: 'En attente')
 
 puts 'Inscriptions created'
 

@@ -8,7 +8,8 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 10 }
-  validates :location, presence: true
+  validates :city, presence: true
+  validates :address, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :date, presence: true
 
