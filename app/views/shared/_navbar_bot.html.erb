@@ -9,8 +9,9 @@
       <%= image_tag "bgm_logo_v1.png" %>
     <% end %>
 
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "bgm_logo_v1.png" %>
+    <%= link_to user_path(current_user.username), class: "navbar-brand" do %>
+      <%= cl_image_tag(current_user.photo.key,
+      class:"avatar", crop: :fill) %>
     <% end %>
 
 </div>
