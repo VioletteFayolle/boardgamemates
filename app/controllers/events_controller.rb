@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
-        lng: envent.longitude,
+        lng: event.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
         marker_html: render_to_string(partial: "marker", locals: {event: event})
       }
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path
     else
-      render :new, status: :unprocessable_entity, locals: { vehicule: @vehicule }
+      render :new, status: :unprocessable_entity, locals: { event: @event }
     end
 
   end
