@@ -15,7 +15,10 @@
       <%= cl_image_tag(current_user.photo.key,
       class:"avatar", crop: :fill) %>
     <% end %>
-
+  <% else %>
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "bgm_logo_v1.png" %>
+    <% end %>
   <% end %>
 
 
