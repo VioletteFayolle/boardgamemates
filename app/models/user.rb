@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class User < ApplicationRecord
   has_one_attached :photo
 
@@ -27,7 +29,7 @@ class User < ApplicationRecord
                                           { overlay: "text:Arial_60_bold:#{initials}", gravity: "center", color: "white" }
                                         ])
 
-    self.update(image_url: image['secure_url'])
+    self.photo.attach(io: URI.open(image["secure_url"]), filename: "user_#{id}_initials.png")
   end
 
   private

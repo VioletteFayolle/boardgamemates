@@ -3,7 +3,7 @@ class Event < ApplicationRecord
 
   has_many :boardgames_lists, dependent: :destroy
   has_many :boardgames, through: :boardgames_lists, dependent: :destroy
-  has_many :inscriptions
+  has_many :inscriptions, dependent: :destroy
   has_many :participants, through: :inscriptions, source: :user
   has_many :messages, dependent: :destroy
   has_many :users, through: :inscriptions
