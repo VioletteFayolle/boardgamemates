@@ -5,9 +5,9 @@ class InscriptionsController < ApplicationController
     @inscription = Inscription.create!(event: @event, user: current_user, :status => "En attente")
 
     if @inscription.save
-      redirect_to @event, notice: "Vous êtes inscrit à l'événement."
+      redirect_to @event, notice: "Demande d'inscription envoyée"
     else
-      redirect_to @event, alert: "Une erreur est survenue lors de l'inscription."
+      redirect_to @event, alert: "Une erreur est survenue lors de l'envoie"
     end
   end
 end
