@@ -23,6 +23,7 @@ puts 'Creating Events'
 # passé
 Event.create!(title: 'Event 1', description: 'Description 1', city: "Lille", address: "Rue de la monnaie", zip_code: "59000", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
 # a venir
+sleep(1)
 event2 = Event.create!(title: 'Event 2', description: 'Description 2', city: "Roubaix", address: "12 Grande rue", zip_code: "59100", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
