@@ -1,4 +1,8 @@
+require 'open-uri'
+
 class User < ApplicationRecord
+  has_one_attached :photo
+
   has_many :my_events, class_name: 'Event', foreign_key: 'user_id', dependent: :destroy
 
   has_many :inscriptions, dependent: :destroy
@@ -14,4 +18,23 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  after_create :generate_initials_image
+
+  def generate_initials_image
+    image = Cloudinary::Uploader.upload("https://via.placeholder.com/150x150.png?text=#{initials}",
+                                        public_id: "user_#{id}_initials",
+                                        transformation: [
+                                          { width: 150, height: 150, gravity: "center", crop: "fill" },
+                                          { overlay: "text:Arial_60_bold:#{initials}", gravity: "center", color: "white" }
+                                        ])
+
+    self.photo.attach(io: URI.open(image["secure_url"]), filename: "user_#{id}_initials.png")
+  end
+
+  private
+
+  def initials
+    "#{first_name[0].upcase}#{last_name[0].upcase}"
+  end
 end
