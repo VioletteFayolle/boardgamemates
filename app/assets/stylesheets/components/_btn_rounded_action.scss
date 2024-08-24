@@ -10,6 +10,7 @@
   transition: background-color 0.3s;
   margin-bottom: 7vh;
   cursor: pointer;
+  z-index: 500;
 
   &:hover {
     background-color: rgba(128, 128, 128, 0.5);

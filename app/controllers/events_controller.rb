@@ -3,6 +3,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
+        marker_html: render_to_string(partial: "marker", locals: {event: event})
+      }
+    end
   end
 
   def show
@@ -20,7 +28,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path
     else
-      render :new, status: :unprocessable_entity, locals: { vehicule: @vehicule }
+      render :new, status: :unprocessable_entity, locals: { event: @event }
     end
 
   end
@@ -32,7 +40,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :city, :address, :date, :capacity)
+    params.require(:event).permit(:title, :description, :city, :address, :zip_code, :date, :capacity)
   end
 
 end

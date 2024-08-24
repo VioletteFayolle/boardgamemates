@@ -16,4 +16,16 @@ class Event < ApplicationRecord
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :date, presence: true
 
+
+  geocoded_by :full_address
+
+
+  after_validation :geocode, if: :will_save_change_to_address?
+
+
+  private
+
+  def full_address
+    "#{address}, #{zip_code}, #{city}, France"
+  end
 end
