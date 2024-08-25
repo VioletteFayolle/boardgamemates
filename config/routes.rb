@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   get "/évènements/:id/chat", to: 'events#chat', as: "chat"
 
 
-  get "/profil/mes-demandes", to: 'users#demandes', as: "mes-demandes"
-  get "/profil/mes-évènements", to: 'users#évènements', as: "mes-evenements"
+  get "/profil/mes-demandes", to: 'users#my_inscriptions', as: "mes-demandes"
+  get "/profil/mes-évènements", to: 'users#my_events', as: "mes-evenements"
 
+  resources :inscriptions, only: %i[update]
 
   resources :users, only: %i[show edit update], path: "profil", param: :username
 

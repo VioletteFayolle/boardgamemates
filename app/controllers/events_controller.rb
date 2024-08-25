@@ -34,7 +34,8 @@ class EventsController < ApplicationController
   end
 
   def chat
-
+    @event = Event.find(params[:id])
+    @message = Message.new
   end
 
   private
