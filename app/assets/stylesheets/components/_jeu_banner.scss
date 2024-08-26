@@ -1,0 +1,22 @@
+.jeu-banner {
+  max-height: 28vh;
+  height: 28vh;
+  position: center;
+  width: 100%;
+  opacity: .7;
+  background-size: cover;
+}
+
+.caract {
+  border-radius: 4px;
+  padding: 0.5vh;
+  border: 1px solid black;
+  margin: 1vh;
+}
+
+.caracts {
+  display: flex;
+  height: 100%;
+  justify-content: end;
+  align-items: end;
+}

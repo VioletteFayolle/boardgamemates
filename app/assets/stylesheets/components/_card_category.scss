@@ -8,6 +8,7 @@
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
+  opacity: .8;
 
 }
 
@@ -17,8 +18,8 @@
   grid-gap: 2vh;
 }
 
-#plateau {
-  background-image: url('boardgame_mates_banner');
+#Jeux-de-plateau {
+  background-image: url('games/jeu_scythe.jpg');
 }
 
 #cartes {

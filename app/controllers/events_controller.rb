@@ -20,6 +20,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @boardgames = Boardgame.all
   end
 
   def create
@@ -41,7 +42,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :city, :address, :zip_code, :date, :capacity)
+    params.require(:event).permit(:title, :description, :address, :date, :capacity, :longitude, :latitude)
   end
 
 end

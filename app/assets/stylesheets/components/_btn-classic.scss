@@ -1,0 +1,16 @@
+.btn-classic {
+  text-align: center;
+  padding: 1.5vh;
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: rgb(255, 184, 48);
+  color: black;
+  bottom: 0;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+  }
+}
