@@ -10,22 +10,19 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 10 }
-  validates :city, presence: true
   validates :address, presence: true
-  validates :zip_code, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :date, presence: true
 
+  after_validation :set_city
 
-  geocoded_by :full_address
-
+  geocoded_by :address
 
   after_validation :geocode, if: :will_save_change_to_address?
 
-
   private
 
-  def full_address
-    "#{address}, #{zip_code}, #{city}, France"
+  def set_city
+    self.city = address.split(',')[-2].split(' ', 2)[1].strip
   end
 end

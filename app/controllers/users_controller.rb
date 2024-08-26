@@ -5,11 +5,16 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
   end
 
-  def demandes
+  def my_inscriptions
+    @requests = current_user.requests.where(status: "En attente")
+    @processed_requests = current_user.requests.where(status: ["Validée", "Rejetée"])
 
+    @inscriptions = current_user.inscriptions.where(status: "En attente")
+    @processed_inscriptions = current_user.inscriptions.where(status: ["Validée", "Rejetée"])
   end
 
-  def évènements
-
+  def my_events
+    @my_events = current_user.my_events
+    @events = current_user.events
   end
 end

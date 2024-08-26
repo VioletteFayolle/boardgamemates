@@ -10,12 +10,15 @@
   <%= f.input :date,
               as: :string,
               input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :address,
-              label: "Adresse" %>
-  <%= f.input :city,
-              label: "Ville" %>
-  <%= f.input :zip_code,
-              label: "Code postal" %>
+  <%= f.input :time,
+              as: :string,
+              input_html: { data: { controller: "timepicker" } } %>
+  <%= render "map_form", f: f %>
+
+  <h2>Ajouter des Jeux</h2>
+
+
+
 
   <%= f.button :submit %>
 <% end %>

@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="form-actions">
-                      <%= f.submit "S'inscrire", class: "btn-submit" %>
+                      <%= f.submit "S'inscrire", class: "btn-submit", data: {controller: :inscriptopns, turbo_method: :post } %>
                     </div>
                   <% end %>
                 </div>
@@ -88,9 +88,12 @@
       <% end %>
     </ul>
   <% else %>
-    <h'>Aucun participant pour le moment</h4>
+    <h4>Aucun participant pour le moment</h4>
   <% end %>
 
 
+
+
+  <%= link_to image_tag("btn_chat.png", class:"btn-action"), chat_path %>
 
 </div>

@@ -1,24 +1,26 @@
-<div class="banner">
-  <div class="bgm-container">
-    <div>
-      <h1><%= @boardgame.name %></h1>
-      <p><%= @boardgame.description %></p>
-      <%= link_to "Ajouter à mes jeux préférés", "profil_path", class: "btn-banner"%>
-    </div>
+<div class="jeu-banner" style="background-image:url(<%= image_path(@boardgame.image_url) %>)">
+
+  <div class="caracts">
+    <div class ="caract"><i class="fa-solid fa-user-group"></i><span> <%= @boardgame.min_players %> - <%= @boardgame.max_players %></span></div>
+    <div class ="caract"><i class="fa-regular fa-clock"></i><span> <%= @boardgame.playing_time %> min</span></div>
   </div>
 </div>
-
 <div class="bgm-container">
-  <div class="card-category" id="game-cat">
-    <h3><%= @boardgame.category %></h3>
-  </div>
-</div>
+  <div>
+    <h2><%= @boardgame.name %></h2>
 
-  <ul>
-    <li><p>Nombre de joueurs : <%=@boardgame.min_players %> - <%= @boardgame.max_players %></p></li>
-    <li><p>Temps de jeu moyen : <%= @boardgame.playing_time %> minutes</p></li>
-    <li><p>Age minimum recommandé : <%= @boardgame.age %> ans</p></li>
-    <li><p>Date de sortie : <%= @boardgame.release_year %></p></li>
-    <li><p>Editeur : <%= @boardgame.publisher %></p></li>
-  </ul>
+    <p><%= @boardgame.description %></p>
+    <div class="card-category", id=<%= @boardgame.category.gsub(' ', '-') %>>
+          <h3><%= @boardgame.category %></h3>
+        </div>
+  </div>
+
+  <div class="infos">
+    <h4>Age minimum recommandé : <%= @boardgame.age %> ans</h4>
+    <h4>Date de sortie : <%= @boardgame.release_year %></h4>
+    <h4>Editeur : <%= @boardgame.publisher %></h4>
+  </div>
+  <div style="display: flex; justify-content: center;">
+    <%= link_to "Ajouter à mes jeux préférés", signed_in? ? user_path(current_user.name) : new_user_session_path, class: "btn-classic"%>
+  </div>
 </div>

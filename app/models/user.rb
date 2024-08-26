@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :my_events, class_name: 'Event', foreign_key: 'user_id', dependent: :destroy
 
   has_many :inscriptions, dependent: :destroy
+  has_many :requests, through: :my_events, source: :inscriptions, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :events, through: :inscriptions, source: :event, dependent: :destroy
 
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   after_create :generate_initials_image
 
   def generate_initials_image
-    image = Cloudinary::Uploader.upload("https://via.placeholder.com/150x150.png?text=#{initials}",
+    image = Cloudinary::Uploader.upload("https://fakeimg.pl/150x150/cccccc/?text= ",
                                         public_id: "user_#{id}_initials",
                                         transformation: [
                                           { width: 150, height: 150, gravity: "center", crop: "fill" },
@@ -31,7 +32,8 @@ class User < ApplicationRecord
 
     self.photo.attach(io: URI.open(image["secure_url"]), filename: "user_#{id}_initials.png")
   end
-
+  #  "https://via.placeholder.com/150x150.png?text=#{initials}"
+  #  "https://placehold.co/150/png?text=#{initials}"
   private
 
   def initials
