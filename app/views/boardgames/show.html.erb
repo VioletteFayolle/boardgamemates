@@ -21,6 +21,6 @@
     <h4>Editeur : <%= @boardgame.publisher %></h4>
   </div>
   <div style="display: flex; justify-content: center;">
-    <%= link_to "Ajouter à mes jeux préférés", signed_in? ? user_path(current_user.name) : new_user_session_path, class: "btn-classic"%>
+    <%= link_to "Ajouter à mes jeux préférés", signed_in? ? user_path(current_user.username) : new_user_session_path, class: "btn-classic"%>
   </div>
 </div>
