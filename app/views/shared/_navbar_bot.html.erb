@@ -1,24 +1,25 @@
 <div class="navbar-bgm-bot">
 
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "bgm_logo_v1.png" %>
+  <%= link_to events_path, class: "navbar-brand" do %>
+    <%= image_tag "loupe_noire.png" %>
   <% end %>
 
 
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "bgm_logo_v1.png" %>
+  <%= link_to mes_evenements_path, class: "navbar-brand" do %>
+    <%= image_tag "my_events.png" %>
   <% end %>
 
 
   <% if user_signed_in? %>
     <%= link_to user_path(current_user.username), class: "navbar-brand" do %>
-      <%= cl_image_tag(current_user.photo.key,
-      class:"avatar", crop: :fill) %>
+      <%= image_tag "profil_noir.png" %>
     <% end %>
+
   <% else %>
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "bgm_logo_v1.png" %>
+    <%= link_to new_user_session_path, class: "navbar-brand" do %>
+      <%= image_tag "profil_noir.png" %>
     <% end %>
+
   <% end %>
 
 

@@ -1,19 +1,13 @@
 .event-creator {
-  margin-top: 1.5vh;
-  display: flex;
-  justify-content: flex-end;
+  width: 50%;
   align-items: center;
+  display: flex;
+  justify-content: space-around;
 
   p {
     margin: 0 !important;
   }
-
 }
-
-
-
-
-
 
 .modal {
   position: fixed;
@@ -47,4 +41,13 @@
   right: 10px;
   font-size: 24px;
   cursor: pointer;
+}
+
+.infos {
+  padding: 2vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border: 0.4vh, solid rgb(255, 184, 48);
+  border-radius: 2vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
 }
