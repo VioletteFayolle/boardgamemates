@@ -25,6 +25,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.boardgames << Boardgame.where(id: params[:event][:boardgame_ids].split(","))
     @event.creator = current_user
     if @event.save
       redirect_to events_path
@@ -42,7 +43,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :address, :date, :capacity, :longitude, :latitude)
+    params.require(:event).permit(:title, :description, :address, :date, :time, :capacity, :longitude, :latitude)
   end
 
 end

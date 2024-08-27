@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   get "/évènements/:id/chat", to: 'events#chat', as: "chat"
 
+  resources :boardgames, only: [] do
+    collection do
+      get :search
+      get :select
+    end
+  end
 
   get "/profil/mes-demandes", to: 'users#my_inscriptions', as: "mes-demandes"
   get "/profil/mes-évènements", to: 'users#my_events', as: "mes-evenements"

@@ -21,10 +21,10 @@ puts 'Users created'
 
 puts 'Creating Events'
 # passé
-Event.create!(title: 'Event 1', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), capacity: rand(1..15), creator: User.first)
+Event.create!(title: 'Event 1', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
 # a venir
 sleep(1)
-event2 = Event.create!(title: 'Event 2', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), capacity: rand(1..15), creator: User.last)
+event2 = Event.create!(title: 'Event 2', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 
