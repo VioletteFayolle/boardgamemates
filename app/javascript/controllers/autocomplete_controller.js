@@ -6,8 +6,8 @@ export default class extends Controller {
 
   connect() {
     this.ids = [];
-    console.log(this.selectedBoardgamesTarget.value);
-    console.log(this.boardgamesIdsTarget.value);
+    // console.log(this.selectedBoardgamesTarget.value);
+    // console.log(this.boardgamesIdsTarget.value);
 
 
   }
@@ -37,7 +37,7 @@ export default class extends Controller {
         this.selectedBoardgamesTarget.insertAdjacentHTML('beforeend', boardgame.render);
         this.ids.push(boardgame.id);
         this.boardgamesIdsTarget.value = this.ids.join(',');
-        console.log(this.boardgamesIdsTarget.value);
+        // console.log(this.boardgamesIdsTarget.value);
       })
 
   }
