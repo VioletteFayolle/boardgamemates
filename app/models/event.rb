@@ -13,8 +13,9 @@ class Event < ApplicationRecord
   validates :address, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :date, presence: true
+  validates :time, presence: true
 
-  after_validation :set_city
+  before_save :set_city
 
   geocoded_by :address
 
@@ -25,4 +26,5 @@ class Event < ApplicationRecord
   def set_city
     self.city = address.split(',')[-2].split(' ', 2)[1].strip
   end
+
 end
