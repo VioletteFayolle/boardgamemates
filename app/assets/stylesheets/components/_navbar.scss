@@ -1,12 +1,25 @@
 .navbar-bgm {
-  justify-content: space-between;
+  position: sticky;
   background-color: rgb(255, 237, 218);
-}
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  z-index: 1000;
 
-.navbar-bgm .navbar-collapse {
-  flex-grow: 0;
 }
 
 .navbar-bgm .navbar-brand img {
-  width: 54px;
+  width: 20vh;
+}
+
+.navbar-notif img {
+  width: 6vh;
+}
+
+.navbar-empty {
+  width: 6vh;
 }

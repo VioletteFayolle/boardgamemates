@@ -1,5 +1,5 @@
-<div class="banner">
   <div class="bgm-container">
+<div class="banner-color">
     <div>
       <h1><%= @event.title %></h1>
       <p><%= @event.description %></p>
@@ -8,7 +8,7 @@
       <% if current_user != @event.creator && @event.participants.include?(current_user) == false %>
         <% if user_signed_in? %>
             <div data-controller="toggle">
-              <%= link_to "Rejoindre", "#", data: { action: "click->toggle#display" }, class: "btn-banner" %>
+              <%= link_to "Rejoindre", "#", data: { action: "click->toggle#display" }, class: "btn-banner-color" %>
 
               <div data-toggle-target="modal" class="modal hidden">
                 <div class="modal-content">
@@ -29,7 +29,7 @@
               </div>
             </div>
         <% else %>
-          <%= link_to "Rejoindre", new_user_session_path, class: "btn-banner" %>
+          <%= link_to "Rejoindre", new_user_session_path, class: "btn-banner-color" %>
         <% end %>
 
       <% end %>
@@ -37,27 +37,19 @@
     </div>
   </div>
 </div>
-<div class="bgm-container">
-  <%= link_to user_path(@event.creator.username), class: "link_to" do %>
-    <div class="event-creator">
-      <div>
+  <div class="bgm-container">
+    <%= link_to user_path(@event.creator.username), class: "link_to" do %>
+      <div class="event-creator">
+        <%= cl_image_tag(@event.creator.photo.key, class: "avatar") %>
         <p>Proposé par</p>
         <p><%= @event.creator.username %></p>
       </div>
-      <div>
-        <%= image_tag "bgm_logo_v1.png", class: "avatar" %>
-      </div>
-    </div>
-  <% end %>
-  <h2>Les jeux proposés</h2>
-
-  <div class="cards">
-
+    <% end %>
+    <h2>Les jeux proposés</h2>
+    <div class="bg-cards">
     <% @event.boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
-        <div class="card_boardgame">
-          <h4><%= boardgame.name %></h4>
-        </div>
+        <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
       <% end %>
     <% end %>
 
@@ -65,35 +57,25 @@
 
 
 
-
-
-
   <h2>Informations</h2>
 
-  <ul>
-    <li><p>Date : <%= @event.date %></p></li>
-    <li><p>Lieu : <%= @event.city %></p></li>
-    <li><p>Places : <%= @event.capacity %></p></li>
-  </ul>
-
-
+  <div class="infos">
+    <p>Date : <%= @event.date %></p>
+    <p>Lieu : <%= @event.city %></p>
+    <p>Places : <%= @event.capacity %></p>
+  </div>
 
   <h2>Participants</h2>
 
-
-  <% if @event.participants %>
-    <ul>
-      <% @event.participants.each do |participant| %>
-        <li><p><%= participant.username %></p></li>
-      <% end %>
-    </ul>
+  <% if @event.participants.present? %>
+    <div class="participant-cards">
+        <% @event.participants.each do |participant| %>
+          <%= cl_image_tag(participant.photo.key, class: "avatar") %>
+        <% end %>
   <% else %>
-    <h4>Aucun participant pour le moment</h4>
+        <p>Aucun participant pour le moment</p>
   <% end %>
-
-
-
-
+    </div>
   <%= link_to image_tag("btn_chat.png", class:"btn-action"), chat_path %>
 
 </div>

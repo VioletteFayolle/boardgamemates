@@ -1,10 +1,40 @@
 .card_boardgame {
-  background-color: white;
-  height: 6vh;
+  position: relative;
+  height: 8.4vh;
+  width: 12vh;
+  flex-direction: column;
   display: flex;
-  justify-content: center;
   text-align: center;
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
+
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 75%;
+    border-radius: 4px 4px 0 0;
+  }
+
+  h4 {
+    padding: 0.8vh;
+    font-size: 1.2vh;
+  }
+
+  .close {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    padding: 0.5vh;
+    cursor: pointer;
+  }
+
+}
+
+.bg-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2vh;
 }
