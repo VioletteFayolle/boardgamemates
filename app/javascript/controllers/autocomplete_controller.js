@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
 
-  static targets = ["input", "results", "selectedBoardgames", "boardgamesIds"];
+  static targets = ["input", "results", "selectedBoardgames", "boardgamesIds", "close"];
 
   connect() {
     this.ids = [];
@@ -44,7 +44,12 @@ export default class extends Controller {
 
   remove(event) {
     this.ids = this.ids.filter(id => id !== parseInt(event.target.parentElement.getAttribute('data-boardgame-id')));
-    event.target.parentElement.remove();
+    this.boardgamesIdsTarget.value = this.ids.join(',');
+    // event.target.parentElement.remove();
+    // event.closeTarget.parentElement.remove();
+    console.log(event.currentTarget.parentElement.remove());
+
+
   }
 
 }
