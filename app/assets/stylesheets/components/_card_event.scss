@@ -1,11 +1,14 @@
 .card-event {
-  display: flex;
   padding: 1.2vh;
   background-color: rgb(61, 178, 255);
   border-radius: 2vh;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
-  justify-content: space-between;
 
+
+  .event-infos {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .elements {
     color: black;

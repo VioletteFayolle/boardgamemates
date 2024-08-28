@@ -1,61 +1,62 @@
 <div class="bgm-container">
-  <h1>Mes demandes d'inscription</h1>
+  <div class="banner-color block-margin">
+    <h1>Mes demandes d'inscription</h1>
+  </div>
 
-
-  <h2>Reçues</h2>
-  <!-- inscriptions reçues -->
-  <div style="background: white">
-    <% if @requests.empty? %>
-      <p>Aucune demande en attente</p>
-    <% else %>
-    <p>En attente :</p>
-      <% @requests.each do |request| %>
-        <p><%= request.comment %></p>
-        <%= link_to "Accepter", inscription_path(request, status: "Validée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment accepter", turbo_method: :patch} %>
-        <%= link_to "Refuser", inscription_path(request, status: "Rejetée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment refuser", turbo_method: :patch} %>
+    <h2>Reçues</h2>
+    <!-- inscriptions reçues -->
+    <div class="block-margin infos">
+      <% if @requests.empty? %>
+        <p>Aucune demande en attente</p>
+      <% else %>
+      <h4>En attente</h4>
+        <% @requests.each do |request| %>
+          <p><%= request.comment %></p>
+          <%= link_to "Accepter", inscription_path(request, status: "Validée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment accepter", turbo_method: :patch} %>
+          <%= link_to "Refuser", inscription_path(request, status: "Rejetée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment refuser", turbo_method: :patch} %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-
-  <% if @processed_requests.present? %>
-    <div style="background: whitesmoke">
-      <p>Vos demandes traitées :</p>
-      <ul>
-        <% @processed_requests.each do |request| %>
-          <li><%= request.comment %>  =>  <%= request.status %></li>
-        <% end %>
-      </ul>
     </div>
-  <% end %>
 
-
-
-
-
-  <h2>Envoyées</h2>
-  <!-- inscriptions envoyées -->
-  <div style="background: white">
-    <% if @inscriptions.empty? %>
-      <p>Aucune demande en attente</p>
-    <% else %>
-      <p>En attente :</p>
-      <ul>
-        <% @inscriptions.each do |inscription| %>
-          <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
-        <% end %>
-      </ul>
+    <% if @processed_requests.present? %>
+      <div class="block-margin border-color">
+        <p>Anciennnes demandes</p>
+        <ul>
+          <% @processed_requests.each do |request| %>
+            <li><%= request.comment %>  =>  <%= request.status %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
 
-  <% if @processed_inscriptions.present? %>
-    <div style="background: whitesmoke">
-      <p>Vos demandes traitées :</p>
-      <ul>
-        <% @processed_inscriptions.each do |inscription| %>
-          <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
-        <% end %>
-      </ul>
+
+
+
+
+    <h2>Envoyées</h2>
+    <!-- inscriptions envoyées -->
+    <div style="background: white">
+      <% if @inscriptions.empty? %>
+        <p>Aucune demande en attente</p>
+      <% else %>
+        <p>En attente :</p>
+        <ul>
+          <% @inscriptions.each do |inscription| %>
+            <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-  <% end %>
+
+    <% if @processed_inscriptions.present? %>
+      <div style="background: whitesmoke">
+        <p>Vos demandes traitées :</p>
+        <ul>
+          <% @processed_inscriptions.each do |inscription| %>
+            <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
 </div>
