@@ -1,9 +1,9 @@
 <div class="card_boardgame pb-2" data-boardgame-id=<%= boardgame.id %>>
   <%= image_tag(boardgame.image_url) %>
   <% if close %>
-  <div class="close" data-action="click->autocomplete#remove">
-    <i class="fa-solid fa-xmark"></i>
-  </div>
+    <div class="close" data-action="click->autocomplete#remove" data-autocomplete-target="close">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
   <% end %>
   <h4><%= boardgame.name %></h4>
 </div>

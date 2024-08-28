@@ -15,6 +15,8 @@
               input_html: { data: { controller: "timepicker" } } %>
   <%= render "map_form", f: f %>
 
+  <h2>Ajouter des jeux</h2>
+
   <div data-controller="autocomplete">
 
     <%= f.hidden_field :boardgame_ids, value: "", data: { autocomplete_target: "boardgamesIds"} %> <!-- hidden field to store the boardgame ids -->

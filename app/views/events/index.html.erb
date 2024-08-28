@@ -1,7 +1,24 @@
-<h3>Barre de recherche et filtres</h3>
-<h3>MAP</h3>
 
 <div class="bgm-container">
+  <h3>Barre de recherche et filtres</h3>
+
+  <%= simple_form_for :search, url: events_path, method: :get, wrapper: :default, html: { class: 'search-form form-inline' } do |f| %>
+    <div class="form-group">
+      <%= f.input :city, label: false, placeholder: "Entrez un lieu", input_html: { class: "search-input form-control" }, required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :boardgame, label: false, placeholder: "Entrez un jeu", input_html: { class: "search-input form-control" }, required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :date, as: :string, label: false, placeholder: "Sélectionnez une date", input_html: { class: "search-input form-control", data: { controller: "datepicker" } }, required: false %>
+    </div>
+
+
+    <%= f.submit "Filtrer", class: "btn btn-primary btn-search" %>
+  <% end %>
+
 
   <div style="width: 100%; height: 25vh; margin-bottom: 20px;"
     data-controller="map"
@@ -10,31 +27,36 @@
   </div>
 
 
+  <% if @events.any? %>
 
-  <% @events.each do |event| %>
-    <div class="card-event">
-      <%= link_to user_path(event.creator.username), class: "link_to" do %>
-        <div class="event-creator">
-          <div>
-            <p>Proposé par</p>
-            <p><%= event.creator.username %></p>
+    <% @events.each do |event| %>
+      <div class="card-event">
+        <%= link_to user_path(event.creator.username), class: "link_to" do %>
+          <div class="event-creator">
+            <div>
+              <p>Proposé par</p>
+              <p><%= event.creator.username %></p>
+            </div>
+            <div>
+              <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
+            </div>
           </div>
+        <% end %>
+        <%= link_to event_path(event), class:"link-to" do %>
           <div>
-            <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
+            <h2><%= event.title %></h2>
+            <p>Description : <%= event.description %></p>
+            <p>Date : <%= event.date %></p>
+            <p>Lieu : <%= event.city %></p>
+            <p>Places : <%= event.capacity %></p>
           </div>
-        </div>
-      <% end %>
-      <%= link_to event_path(event), class:"link-to" do %>
-        <div>
-          <h2><%= event.title %></h2>
-          <p>Description : <%= event.description %></p>
-          <p>Date : <%= event.date %></p>
-          <p>Lieu : <%= event.city %></p>
-          <p>Places : <%= event.capacity %></p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% else %>
+      <em>Désolé, aucun évènement trouvé.</em>
+    <% end %>
 
 </div>
 

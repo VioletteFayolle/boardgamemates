@@ -14,8 +14,8 @@ Boardgame.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0)
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0)
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
 
 puts 'Users created'
 
@@ -43,7 +43,7 @@ puts 'Messages created'
 
 puts 'Creating Boardgames'
 
-board1 = Boardgame.create(
+Boardgame.create(
   name: "Catan",
   description: "Dans Catan, les joueurs collectent des ressources et les utilisent pour construire des routes, des colonies et des villes.",
   image_url: "games/catan_banner.jpg",
@@ -57,7 +57,7 @@ board1 = Boardgame.create(
   publisher: "Kosmos"
 )
 
-board2 = Boardgame.create(
+Boardgame.create(
   name: "Carcassonne",
   description: "Carcassonne est un jeu de pose de tuiles où les joueurs construisent des routes, des villes, et des cloîtres pour marquer des points.",
   image_url: "games/jeu_carcassonne.jpg",
