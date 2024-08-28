@@ -1,5 +1,24 @@
 
 <div class="bgm-container">
+  <h3>Barre de recherche et filtres</h3>
+
+  <%= simple_form_for :search, url: events_path, method: :get, wrapper: :default, html: { class: 'search-form form-inline' } do |f| %>
+    <div class="form-group">
+      <%= f.input :city, label: false, placeholder: "Entrez un lieu", input_html: { class: "search-input form-control" }, required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :boardgame, label: false, placeholder: "Entrez un jeu", input_html: { class: "search-input form-control" }, required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :date, as: :string, label: false, placeholder: "Sélectionnez une date", input_html: { class: "search-input form-control", data: { controller: "datepicker" } }, required: false %>
+    </div>
+
+
+    <%= f.submit "Filtrer", class: "btn btn-primary btn-search" %>
+  <% end %>
+
 
   <div style="width: 100%; height: 25vh; margin-bottom: 20px;"
     data-controller="map"
@@ -8,6 +27,7 @@
   </div>
 
 
+  <% if @events.any? %>
 
   <% @events.each do |event| %>
     <%= render "events/card", event: event %>

@@ -2,7 +2,15 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+
     @events = Event.all
+
+    if params[:search].present?
+      @events = @events.where("city ILIKE ?", "%#{params[:search][:city]}%") if params[:search][:city].present?
+      @events = @events.where("date::text ILIKE ?", "%#{params[:search][:date]}%") if params[:search][:date].present?
+      @events = @events.joins(:boardgames).where("boardgames.name ILIKE ?", "%#{params[:search][:boardgame]}%") if params[:search][:boardgame].present?
+    end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -39,6 +47,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @message = Message.new
   end
+
 
   private
 

@@ -1,0 +1,57 @@
+// // /* Formulaire de recherche */
+// // .search-form {
+// //   display: flex;
+// //   align-items: center;
+// //   justify-content: space-between;
+// //   margin-bottom: 20px;
+// // }
+
+// // .search-form .form-group {
+// //   margin-right: 10px;
+// //   flex: 1;
+// // }
+
+// // .search-input {
+// //   width: 100%;
+// //   padding: 10px;
+// //   font-size: 16px;
+// //   border-radius: 4px;
+// //   border: 1px solid #ccc;
+// // }
+
+// // .btn-search {
+// //   padding: 10px 20px;
+// //   font-size: 16px;
+// //   border-radius: 4px;
+// //   background-color: #007bff;
+// //   color: white;
+// //   border: none;
+// //   cursor: pointer;
+// // }
+
+// // .btn-search:hover {
+// //   background-color: #0056b3;
+// // }
+
+// .form-group-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+//   /* Espace entre les lignes */
+// }
+
+// .form-group-row {
+//   display: flex;
+//   justify-content: space-between;
+//   gap: 10px;
+//   /* Espace entre les inputs */
+// }
+
+// .form-group {
+//   flex: 1;
+// }
+
+// .search-input {
+//   width: 100%;
+//   /* S'assurer que les inputs occupent toute la largeur disponible */
+// }

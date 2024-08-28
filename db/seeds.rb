@@ -14,23 +14,77 @@ Boardgame.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: 0, rate: 0)
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: 0, rate: 0)
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+
+User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', birth_date: '1988-05-12', count: rand(18..40), rate: 0)
+User.create!(email: 'user3@user.com', password: 'password', username: 'MoonWalker', first_name: 'Alice', last_name: 'Brown', birth_date: '1992-07-23', count: rand(18..40), rate: 0)
+User.create!(email: 'user4@user.com', password: 'password', username: 'ThunderBolt', first_name: 'Bob', last_name: 'Johnson', birth_date: '1985-10-10', count: rand(18..40), rate: 0)
+User.create!(email: 'user5@user.com', password: 'password', username: 'SilentShadow', first_name: 'Charlie', last_name: 'Williams', birth_date: '1994-03-15', count: rand(18..40), rate: 0)
+User.create!(email: 'user6@user.com', password: 'password', username: 'CrystalDream', first_name: 'Emily', last_name: 'Jones', birth_date: '1989-12-01', count: rand(18..40), rate: 0)
+User.create!(email: 'user7@user.com', password: 'password', username: 'SilverFox', first_name: 'Michael', last_name: 'Garcia', birth_date: '1987-04-20', count: rand(18..40), rate: 0)
+User.create!(email: 'user8@user.com', password: 'password', username: 'WhisperWind', first_name: 'Sophia', last_name: 'Miller', birth_date: '1991-08-17', count: rand(18..40), rate: 0)
+User.create!(email: 'user9@user.com', password: 'password', username: 'IronClad', first_name: 'Daniel', last_name: 'Davis', birth_date: '1986-11-09', count: rand(18..40), rate: 0)
+User.create!(email: 'user10@user.com', password: 'password', username: 'PhoenixFlame', first_name: 'Isabella', last_name: 'Martinez', birth_date: '1993-06-25', count: rand(18..40), rate: 0)
 
 puts 'Users created'
 
 puts 'Creating Events'
+
+addresses = [
+  "10 Rue des Arts, 59000 Lille, France",
+  "25 Rue de la République, 59100 Roubaix, France",
+  "7 Boulevard Carnot, 59160 Lille, France",
+  "8 Rue de la Gare, 59140 Dunkerque, France",
+  "14 Avenue du Général de Gaulle, 59700 Marcq-en-Barœul, France",
+  "32 Rue du Faubourg de Roubaix, 59100 Roubaix, France",
+  "5 Place Charles de Gaulle, 59000 Lille, France",
+  "12 Rue de la Clef, 59100 Roubaix, France",
+  "45 Boulevard de la Liberté, 59800 Lille, France",
+  "19 Rue du Quesnoy, 59300 Valenciennes, France"
+]
+
+10.times do |i|
+  Event.create!(
+    title: "Event #{i + 1}",
+    description: "Description #{i + 1}",
+    address: addresses[i],
+    date: (Date.today - rand(1..30)),
+    time: Time.now.strftime("%H:%M"),
+    capacity: rand(1..15),
+    creator: User.all.sample  # Attribution d'un créateur aléatoire parmi les utilisateurs existants
+  )
+end
 # passé
-Event.create!(title: 'Event 1', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
+Event.create!(title: 'Soiré Yams & Raclette', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
 # a venir
 sleep(1)
-event2 = Event.create!(title: 'Event 2', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
+event2 = Event.create!(title: 'Soirée de zinzin en perspective !', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 
 puts 'Creating Inscriptions'
 
 Inscription.create!(user: User.first, event: event2, comment: 'Comment 1', status: 'En attente')
+
+# Récupération de tous les événements et utilisateurs
+events = Event.all
+
+# Pour chaque événement, créer un nombre aléatoire d inscriptions
+events.each do |event|
+  users = User.all.to_a
+  # Nombre d'inscriptions pour cet événement (entre 1 et 5 par exemple)
+  rand(1..5).times do
+    user = users.delete_at(users.index(users.sample))
+    Inscription.create!(
+      user: user,            # Attribution d'un utilisateur aléatoire
+      event: event,                  # L'événement auquel l'utilisateur s'inscrit
+      comment: "Commentaire pour l'événement #{event.title}",  # Commentaire aléatoire
+      status: ['En attente', 'Validée', 'Rejetée'].sample      # Statut aléatoire
+    )
+  end
+end
 
 puts 'Inscriptions created'
 
@@ -39,11 +93,18 @@ puts 'Creating Messages'
 Message.create!(event: Event.last, user: User.first, content: 'Content 1')
 Message.create!(event: Event.last, user: User.last, content: 'Content 2')
 
+Event.all.each do |event|
+  Message.create!(event: event, user: event.creator, content: 'Bonjour tout le monde !')
+  event.inscriptions.each do |inscription|
+    Message.create!(event: event, user: inscription.user, content: 'Hello')
+  end
+end
+
 puts 'Messages created'
 
 puts 'Creating Boardgames'
 
-board1 = Boardgame.create(
+Boardgame.create(
   name: "Catan",
   description: "Dans Catan, les joueurs collectent des ressources et les utilisent pour construire des routes, des colonies et des villes.",
   image_url: "games/catan_banner.jpg",
@@ -57,7 +118,7 @@ board1 = Boardgame.create(
   publisher: "Kosmos"
 )
 
-board2 = Boardgame.create(
+Boardgame.create(
   name: "Carcassonne",
   description: "Carcassonne est un jeu de pose de tuiles où les joueurs construisent des routes, des villes, et des cloîtres pour marquer des points.",
   image_url: "games/jeu_carcassonne.jpg",
@@ -510,8 +571,12 @@ puts 'Boardgames created'
 
 puts 'Creating Boardgames_lists'
 
-4.times do
-  BoardgamesList.create!(event: Event.first, boardgame: Boardgame.all.sample)
+# 4.times do
+#   BoardgamesList.create!(event: Event.first, boardgame: Boardgame.all.sample)
+# end
+
+Event.all.each do |event|
+  event.boardgames = Boardgame.all.sample(rand(1..6))
 end
 
 puts 'Boardgames_lists created'
