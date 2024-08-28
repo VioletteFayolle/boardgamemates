@@ -3,26 +3,12 @@ class EventsController < ApplicationController
 
   def index
 
-
-    # if params[:search].present?
-    #   if params[:search][:city].present?
-    #     @events + Event.where("city ILIKE ?", "%#{params[:search][:city]}%")
-    #     # @events.flatten!
-    #   end
-
-    # else
-    #   @events = Event.all
-    # end
-    #
     @events = Event.all
 
     if params[:search].present?
-      sqlquery = <<~SQL
-      city ILIKE :query
-      OR date::text ILIKE :query
-      OR boardgame ILIKE :query
-      SQL
-      @events = @events.where(sqlquery, query: "%#{params[:search]}%")
+      @events = @events.where("city ILIKE ?", "%#{params[:search][:city]}%") if params[:search][:city].present?
+      @events = @events.where("date::text ILIKE ?", "%#{params[:search][:date]}%") if params[:search][:date].present?
+      @events = @events.joins(:boardgames).where("boardgames.name ILIKE ?", "%#{params[:search][:boardgame]}%") if params[:search][:boardgame].present?
     end
 
     puts @events
