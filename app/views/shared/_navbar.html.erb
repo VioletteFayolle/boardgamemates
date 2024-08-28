@@ -1,22 +1,24 @@
 <div class=" navbar-bgm">
-<% unless current_page?(root_path) %>
-  <%= link_to url_for(:back), class: "navbar-notif" do %>
-    <%= image_tag "retour_noir.png" %>
-  <% end %>
+
+  <% unless current_page?(root_path) %>
+    <%= link_to url_for(:back), class: "navbar-notif" do %>
+      <%= image_tag "retour_noir.png" %>
+    <% end %>
   <% else %>
-  <div class= "navbar-empty"></div>
-<% end %>
+    <div class= "navbar-empty"></div>
+  <% end %>
+
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "bgm_logo_v4.png" %>
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to mes_demandes_path(current_user), class: "navbar-notif" do %>
-      <%= image_tag "cloche_noire.png" %>
+    <%= link_to destroy_user_session_path, data: { turbo_method: "delete" }, class: "navbar-notif" do %>
+      <%= image_tag "logout.png" %>
     <% end %>
   <% else %>
     <%= link_to new_user_session_path, class: "navbar-notif" do %>
-      <%= image_tag "cloche_noire.png" %>
+      <%= image_tag "login.png" %>
     <% end %>
   <% end %>
 

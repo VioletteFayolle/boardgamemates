@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+    @display = super_current_user?(@user)
   end
 
   def my_inscriptions
@@ -16,5 +17,11 @@ class UsersController < ApplicationController
   def my_events
     @my_events = current_user.my_events
     @events = current_user.events
+  end
+
+  private
+
+  def super_current_user?(user)
+    user == current_user ? "" : "d-none"
   end
 end
