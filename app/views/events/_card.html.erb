@@ -1,0 +1,22 @@
+<div class="block-margin g">
+  <%= link_to user_path(event.creator.username), class: "link_to" do %>
+    <div class="event-creator ">
+      <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
+      <p>Proposé par</p>
+      <p><%= event.creator.username %></p>
+    </div>
+  <% end %>
+    <%= link_to event_path(event), class:"link-to" do %>
+  <div class="card-event">
+      <div class="title">
+        <h2><%= event.title %></h2>
+      </div>
+      <div class="elements">
+        <div><span><%= event.capacity %> </span><i class="fa-solid fa-user-group"></i></div>
+        <div><span> <%= event.date %> </span><i class="fa-solid fa-calendar"></i></div>
+        <div><span> <%= event.city %> </span><i class="fa-solid fa-location-dot"></i></div>
+
+      </div>
+  </div>
+    <% end %>
+</div>

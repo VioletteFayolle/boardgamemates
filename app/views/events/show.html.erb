@@ -39,14 +39,14 @@
 </div>
   <div class="bgm-container">
     <%= link_to user_path(@event.creator.username), class: "link_to" do %>
-      <div class="event-creator">
+      <div class="event-creator block-margin">
         <%= cl_image_tag(@event.creator.photo.key, class: "avatar") %>
         <p>Proposé par</p>
         <p><%= @event.creator.username %></p>
       </div>
     <% end %>
     <h2>Les jeux proposés</h2>
-    <div class="bg-cards">
+    <div class="bg-cards block-margin">
     <% @event.boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
         <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
@@ -59,7 +59,7 @@
 
   <h2>Informations</h2>
 
-  <div class="infos">
+  <div class="infos block-margin">
     <p>Date : <%= @event.date %></p>
     <p>Lieu : <%= @event.city %></p>
     <p>Places : <%= @event.capacity %></p>
@@ -68,7 +68,7 @@
   <h2>Participants</h2>
 
   <% if @event.participants.present? %>
-    <div class="participant-cards">
+    <div class="participant-cards block-margin">
         <% @event.participants.each do |participant| %>
           <%= cl_image_tag(participant.photo.key, class: "avatar") %>
         <% end %>

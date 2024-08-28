@@ -6,21 +6,21 @@
   </div>
 </div>
 <div class="bgm-container">
-  <div>
+  <div class="block-margin">
     <h2><%= @boardgame.name %></h2>
-
+<div class="block-margin">
     <p><%= @boardgame.description %></p>
-    <div class="card-category", id=<%= @boardgame.category.gsub(' ', '-') %>>
+    <div class="card-category block-margin", id=<%= @boardgame.category.gsub(' ', '-') %>>
           <h3><%= @boardgame.category %></h3>
         </div>
   </div>
-
-  <div class="infos">
+</div>
+  <div class="infos block-margin">
     <h4>Age minimum recommandé : <%= @boardgame.age %> ans</h4>
     <h4>Date de sortie : <%= @boardgame.release_year %></h4>
     <h4>Editeur : <%= @boardgame.publisher %></h4>
   </div>
   <div style="display: flex; justify-content: center;">
-    <%= link_to "Ajouter à mes jeux préférés", signed_in? ? user_path(current_user.username) : new_user_session_path, class: "btn-classic"%>
+    <%= link_to "Ajouter à mes jeux préférés", signed_in? ? user_path(current_user.username) : new_user_session_path, class: "btn-classic block-margin"%>
   </div>
 </div>

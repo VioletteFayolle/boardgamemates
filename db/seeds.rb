@@ -472,7 +472,7 @@ Boardgame.create(
   max_players: 6,
   playing_time: 30,
   age: 8,
-  category: "Jeux de société pour enfants",
+  category: "Jeux d'ambiance",
   release_year: 2008,
   publisher: "Libellud"
 )
