@@ -1,19 +1,61 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
 <div class="bgm-container">
+<div class="user-id-card">
+  <div class="full-id">
+      <div class="full-name">
+        <h5><%= @user.first_name %></h5>
+        <h5><%= @user.last_name %></h5>
+      </div>
+      <p><%= @user.username %></p>
+    </div>
+    <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+</div>
+<div class="informations block-margin">
+  <div class="infos-color block-margin">
+    <ul>
+      <li>Membre depuis 2024 </li>
+      <li> 3 évènements créés</li>
+      <li>Participation à 5 évènements</li>
+    </ul>
+  </div>
 
-  <%= cl_image_tag(@user.photo.key,
-        width: "100%", height: "auto") %>
+  <div class="infos block-margin">
 
-  <%# <%= simple_form_for(@user) do |f| %> %>
+    <h4>24 ans</h4>
+
+    <h4>Lille</h4>
+
+  </div>
+</div>
+<div class="block-margin">
+<h4>description bio</h4>
+</div>
+  <h2>Jeux préférés</h2>
+    <div class="bg-cards block-margin">
+    <% @user.my_events.first.boardgames.each do |boardgame| %>
+      <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
+        <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
+      <% end %>
+    <% end %>
+</div>
+<%if @user == current_user%>
+  <h2>Mes évèvements</h2>
+  <% else %>
+    <h2>Evènements de <%= @user.first_name %></h2>
+    <% @user.my_events.each do |event| %>
+      <%= render "events/card", event: event %>
+    <% end %>
+    <% end %>
+
+  <%# <%= simple_form_for(@user) do |f| %>
   <!-- [...] -->
-  <%# <%= f.input :photo, as: :file %> %>
+  <%# <%= f.input :photo, as: :file %>
   <!-- [...] -->
-  <%# <% end %> %>
-
-  <%= link_to "Mes demandes", mes_demandes_path %>
-  <%= link_to "Mes Evenements", mes_evenements_path %>
-
-  <p><%= @user.username %></p>
+  <%# <% end %>
+  <%if current_user == @user%>
+    <div class= "btn-group block-margin" >
+      <%= link_to "Mes demandes", mes_demandes_path, class: "btn-classic" %>
+      <%= link_to "Mes évènements", mes_evenements_path, class: "btn-classic" %>
+    </div>
+<%end%>
 </div>
