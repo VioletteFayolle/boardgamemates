@@ -45,22 +45,48 @@ addresses = [
   "19 Rue du Quesnoy, 59300 Valenciennes, France"
 ]
 
+titles = [
+  "Imagino-Party",
+  "Sauve Qui Peut !",
+  "Mécano-Showdown",
+  "Quêtes et Légendes",
+  "Romance et Ruses",
+  "Pioche à Gogo",
+  "Bâtisseurs en Folie",
+  "Île aux Trésors",
+  "Dé à la Mode",
+  "Guerres et Récoltes"
+]
+
+descriptions = [
+  "Plongez dans un univers où votre imagination est reine avec Dixit. Mais ce n’est pas tout, préparez-vous aussi à des intrigues romantiques avec Loveletter et des défis stratégiques avec Carcassonne !",
+  "Le monde est en péril ! Formez votre équipe pour affronter Pandemic. Ensuite, testez votre coopération avec Saboteur et poursuivez la soirée avec l'exploration de Catane.",
+  "Entrez dans une Europe alternative avec Scythe et montrez vos talents de stratège. Après cela, lancez-vous dans des quêtes épiques avec Pathfinder et terminez avec une conquête stratégique dans Catane.",
+  "Vivez des aventures inoubliables avec Pathfinder. Ensuite, complotez avec Loveletter et construisez votre empire avec Carcassonne.",
+  "Dans l’univers de Loveletter, séduisez la princesse tout en évitant les complots. Continuez avec des stratégies sournoises dans Saboteur et des combats épiques dans Scythe.",
+  "Creusez, trahissez et trouvez de l'or dans Saboteur. Ensuite, défiez vos amis avec Yams et bâtissez des villes avec Carcassonne.",
+  "Conquérez le monde médiéval avec Carcassonne. Continuez votre construction avec Catane et testez vos talents d'improvisation avec Dixit.",
+  "Explorez et colonisez avec Catane. Puis, évitez les pandémies dans Pandemic et plongez dans l'univers fantastique de Pathfinder.",
+  "Lancez les dés avec Yams pour décrocher la victoire ! Continuez avec des jeux de stratégie comme Scythe et Carcassonne.",
+  "Battez-vous pour des ressources dans Scythe. Puis, développez votre empire agricole avec Catane et plongez dans une quête héroïque avec Pathfinder."
+]
+
 10.times do |i|
   Event.create!(
-    title: "Event #{i + 1}",
-    description: "Description #{i + 1}",
+    title: titles[i],
+    description: descriptions[i],
     address: addresses[i],
-    date: (Date.today - rand(1..30)),
+    date: (Date.today + rand(1..30)),
     time: Time.now.strftime("%H:%M"),
-    capacity: rand(1..15),
+    capacity: rand(4..15),
     creator: User.all.sample  # Attribution d'un créateur aléatoire parmi les utilisateurs existants
   )
 end
 # passé
-Event.create!(title: 'Soiré Yams & Raclette', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
+Event.create!(title: 'Soirée Yams & Raclette', description:   "Creusez, trahissez et trouvez de l'or dans Saboteur. Ensuite, défiez vos amis avec Yams et bâtissez des villes avec Carcassonne.", address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
 # a venir
 sleep(1)
-event2 = Event.create!(title: 'Soirée de zinzin en perspective !', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
+event2 = Event.create!(title: 'Soirée de zinzin en perspective !', description:   "Le monde est en péril ! Formez votre équipe pour affronter Pandemic. Ensuite, testez votre coopération avec Saboteur et poursuivez la soirée avec l'exploration de Catane.", address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 

@@ -4,6 +4,15 @@
     <%= image_tag "loupe_noire.png" %>
   <% end %>
 
+  <% if user_signed_in? %>
+    <%= link_to mes_demandes_path(current_user), class: "navbar-notif" do %>
+      <%= image_tag "cloche_noire.png" %>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path, class: "navbar-notif" do %>
+      <%= image_tag "cloche_noire.png" %>
+    <% end %>
+  <% end %>
 
   <%= link_to mes_evenements_path, class: "navbar-brand" do %>
     <%= image_tag "my_events.png" %>
@@ -14,13 +23,12 @@
     <%= link_to user_path(current_user.username), class: "navbar-brand" do %>
       <%= image_tag "profil_noir.png" %>
     <% end %>
-
   <% else %>
     <%= link_to new_user_session_path, class: "navbar-brand" do %>
       <%= image_tag "profil_noir.png" %>
     <% end %>
-
   <% end %>
+
 
 
 
