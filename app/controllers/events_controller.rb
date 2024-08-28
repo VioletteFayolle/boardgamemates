@@ -11,8 +11,6 @@ class EventsController < ApplicationController
       @events = @events.joins(:boardgames).where("boardgames.name ILIKE ?", "%#{params[:search][:boardgame]}%") if params[:search][:boardgame].present?
     end
 
-    puts @events
-
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,

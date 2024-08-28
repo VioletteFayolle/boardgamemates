@@ -7,7 +7,10 @@ export default class extends Controller {
   static values = { type: String }
 
   connect() {
+
     let options = {}
+    options.locale = "fr"
+
     if (this.typeValue === "event") {
       const today = new Date();
       options.minDate = today.setDate(today.getDate() + 0.9)
