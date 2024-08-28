@@ -28,11 +28,10 @@
 
 
   <% if @events.any? %>
-
-  <% @events.each do |event| %>
-    <%= render "events/card", event: event %>
+    <% @events.each do |event| %>
+      <%= render "events/card", event: event %>
+    <% end %>
   <% end %>
-
 </div>
 
 
