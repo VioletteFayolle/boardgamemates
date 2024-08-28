@@ -76,6 +76,10 @@
         <p>Aucun participant pour le moment</p>
   <% end %>
     </div>
-  <%= link_to image_tag("btn_chat.png", class:"btn-action"), chat_path %>
+
+  <% if current_user == @event.creator || @event.users.include?(current_user) %>
+    <%= link_to image_tag("btn_chat.png", class:"btn-action"), chat_path %>
+  <% end %>
+
 
 </div>
