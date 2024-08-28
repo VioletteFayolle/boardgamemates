@@ -8,6 +8,7 @@
   <% end %>
     <%= link_to event_path(event), class:"link-to" do %>
   <div class="card-event">
+    <div class='event-infos'>
       <div class="title">
         <h2><%= event.title %></h2>
       </div>
@@ -15,8 +16,18 @@
         <div><span><%= event.capacity %> </span><i class="fa-solid fa-user-group"></i></div>
         <div><span> <%= event.date %> </span><i class="fa-solid fa-calendar"></i></div>
         <div><span> <%= event.city %> </span><i class="fa-solid fa-location-dot"></i></div>
-
       </div>
-  </div>
+    </div>
+
     <% end %>
+
+    <div class="bg-cards">
+      <% event.boardgames.each do |boardgame| %>
+        <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
+          <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
 </div>
