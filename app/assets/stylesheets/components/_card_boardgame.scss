@@ -1,40 +1,45 @@
-.card_boardgame {
-  position: relative;
-  height: 8.4vh;
-  width: 12vh;
-  flex-direction: column;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  border-radius: 4px;
-  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
-
-
-  img {
-    object-fit: cover;
-    width: 100%;
-    min-height: 75%;
-    border-radius: 4px 4px 0 0;
-  }
-
-  h4 {
-    padding: 0.8vh;
-    font-size: 1.2vh;
-  }
-
-  .close {
-    position: absolute;
-    display: flex;
-    top: 0;
-    right: 0;
-    padding: 0.5vh;
-    cursor: pointer;
-  }
-
-}
-
 .bg-cards {
   display: grid;
+  padding: 1.2vh 1.5vh 0.5vh 1.5vh;
+
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2vh;
+  grid-gap: 1.5vh;
+  justify-content: center;
+  align-items: center;
+
+  .card_boardgame {
+    height: 8.4vh;
+    // width: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12vh;
+
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 4px;
+      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 1) 100%);
+      object-fit: cover;
+    }
+
+    h4 {
+      position: absolute;
+      padding: 0.8vh;
+      font-size: 1.2vh;
+      font-weight: 500;
+    }
+
+    .close {
+      position: absolute;
+      display: flex;
+      top: 0;
+      right: 0;
+      padding: 0.5vh;
+      cursor: pointer;
+    }
+
+  }
+
 }
