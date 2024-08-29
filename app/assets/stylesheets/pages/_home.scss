@@ -9,16 +9,17 @@
 }
 
 .cities{
-  margin: 15px;
+  margin-top: 15px;
 }
+
 #lille {
-  background-image: url('Lille.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Lille.jpg');
 }
 
 #paris {
-  background-image: url('Paris.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Paris.jpg');
 }
 
 #bordeaux {
-  background-image: url('Bordeaux.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Bordeaux.jpg');
 }

@@ -8,7 +8,7 @@
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
-  opacity: .6;
+  // opacity: .6;
 
 }
 
@@ -19,25 +19,25 @@
 }
 
 #Jeux-de-plateau {
-  background-image: url('games/jeu_carcassonne.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('games/jeu_carcassonne.jpg');
 }
 
 #Jeux-de-cartes {
-  background-image: url('games/jeu_love_letter.jpeg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('games/jeu_love_letter.jpeg');
 }
 
 #Jeux-de-stratégie {
-  background-image: url('games/jeu_scythe.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('games/jeu_scythe.jpg');
 }
 
 #Jeux-de-rôle {
-  background-image: url('games/jeu_pathfinder.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),  url('games/jeu_pathfinder.jpg');
 }
 
 #Jeux-de-coopération {
-  background-image: url('games/hanibi_banner.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('games/hanibi_banner.jpg');
 }
 
 #Jeux-d\'ambiance {
-  background-image: url('games/Dixit_banner.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('games/Dixit_banner.jpg');
 }
