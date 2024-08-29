@@ -19,9 +19,22 @@ class UsersController < ApplicationController
     @events = current_user.events
   end
 
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to user_path(@user.username), notice: 'Profile image updated successfully.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def super_current_user?(user)
     user == current_user ? "" : "d-none"
+  end
+
+  def user_params
+    params.require(:user).permit(:photo)
   end
 end
