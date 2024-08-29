@@ -1,6 +1,5 @@
 
 <div class="bgm-container">
-  <h3>Barre de recherche et filtres</h3>
 
   <%= simple_form_for :search, url: events_path, method: :get, wrapper: :default, html: { class: 'search-form form-inline' } do |f| %>
     <div class="form-group">
@@ -16,7 +15,7 @@
     </div>
 
 
-    <%= f.submit "Filtrer", class: "btn btn-primary btn-search" %>
+    <i class="fa-solid fa-magnifying-glass"><% f.submit "Filtrer"%></i>
   <% end %>
 
 

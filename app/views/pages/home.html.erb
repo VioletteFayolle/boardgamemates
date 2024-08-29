@@ -38,7 +38,7 @@
       <h3>Jeux d'ambiance</h3>
     </div>
   </div>
-
+  <div class="block-margin"><h2>Prochains Evènements</h2></div>
   <div class="block-margin">
     <% @events.each do |event| %>
           <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
