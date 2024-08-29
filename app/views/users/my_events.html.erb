@@ -4,14 +4,14 @@
 </div>
 
 
-<div class="bgm-container">
-  <h2>Mes évènements :</h2>
+<div class="bgm-container block-margin">
+  <h2>Mes évènements</h2>
   <% @my_events.each do |event| %>
     <%= render partial: "events/card", locals: { event: event, show_event_creator: false } %>
   <% end %>
 
 
-  <h2>Les évènements aux quels je participe :</h2>
+  <h2>Mes inscriptions</h2>
   <% @events.each do |event| %>
     <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
   <% end %>
