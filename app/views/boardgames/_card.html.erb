@@ -1,4 +1,4 @@
-<div class="card_boardgame pb-2" data-boardgame-id=<%= boardgame.id %>>
+<div class="card_boardgame" data-boardgame-id=<%= boardgame.id %>>
   <%= image_tag(boardgame.image_url) %>
   <% if close %>
     <div class="close" data-action="click->autocomplete#remove" data-autocomplete-target="close">
