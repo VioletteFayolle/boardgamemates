@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["btn", "input", "form"]
 
   connect() {
-    console.log("Hello, Stimulus!", this.element)
+
   }
 
   selectImg() {

@@ -40,32 +40,33 @@
   </div>
 
   <div class="block-margin">
+    <h2>Prochains évènements</h2>
     <% @events.each do |event| %>
           <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
     <% end %>
   </div>
 
   <div class="btn-classic">
-  Voir tous les événements
+    Voir tous les événements
   </div>
 
   <div class="block-margin">
-  <h2 class="h2"> Explorer</h2>
-</div>
+   <h2 class="h2"> Explorer</h2>
+  </div>
 
-<div class="block-margin">
-  <div class="cards">
-    <div class="card-category", id="lille">
-       <h3>Lille</h3>
-    </div>
+  <div class="block-margin">
+    <div class="cards">
+      <div class="card-category", id="lille">
+        <h3>Lille</h3>
+      </div>
 
-    <div class="card-category", id="paris">
-      <h3>Paris</h3>
-    </div>
+      <div class="card-category", id="paris">
+        <h3>Paris</h3>
+      </div>
 
-    <div class="card-category", id="bordeaux">
-      <h3>Bordeaux</h3>
+      <div class="card-category", id="bordeaux">
+        <h3>Bordeaux</h3>
+      </div>
     </div>
   </div>
-</div>
 </div>

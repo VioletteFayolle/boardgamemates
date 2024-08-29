@@ -56,5 +56,6 @@
 .participant-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: left;
+  gap: 2vh;
 }

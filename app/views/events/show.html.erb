@@ -70,7 +70,9 @@
   <% if @event.participants.present? %>
     <div class="participant-cards block-margin">
         <% @event.participants.each do |participant| %>
-          <%= cl_image_tag(participant.photo.key, class: "avatar") %>
+          <%= link_to user_path(participant.username) do %>
+            <%= cl_image_tag(participant.photo.key, class: "avatar") %>
+          <% end %>
         <% end %>
   <% else %>
         <p>Aucun participant pour le moment</p>

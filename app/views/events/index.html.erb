@@ -1,26 +1,30 @@
 
 <div class="bgm-container">
-  <h3>Barre de recherche et filtres</h3>
-
-  <%= simple_form_for :search, url: events_path, method: :get, wrapper: :default, html: { class: 'search-form form-inline' } do |f| %>
-    <div class="form-group">
-      <%= f.input :city, label: false, placeholder: "Entrez un lieu", input_html: { class: "search-input form-control" }, required: false %>
-    </div>
-
-    <div class="form-group">
-      <%= f.input :boardgame, label: false, placeholder: "Entrez un jeu", input_html: { class: "search-input form-control" }, required: false %>
-    </div>
-
-    <div class="form-group">
-      <%= f.input :date, as: :string, label: false, placeholder: "Sélectionnez une date", input_html: { class: "search-input form-control", data: { controller: "datepicker" } }, required: false %>
-    </div>
 
 
-    <%= f.submit "Filtrer", class: "btn btn-primary btn-search" %>
-  <% end %>
+  <div class="filter-bar" data-controller="input">
 
+    <%= simple_form_for :search, url: events_path, method: :get, wrapper: :default, html: { class: 'search-form form-inline' } do |f| %>
+      <div class="form-group">
+        <%= f.input :city, label: false, placeholder: "Entrez un lieu", input_html: { class: "search-input form-control" }, required: false %>
+      </div>
 
-  <div style="width: 100%; height: 25vh; margin-bottom: 20px;"
+      <div class="form-group">
+        <%= f.input :boardgame, label: false, placeholder: "Entrez un jeu", input_html: { class: "search-input form-control" }, required: false %>
+      </div>
+
+    <!--  <div class="form-group">
+        <%= f.input :date, as: :string, label: false, placeholder: "Sélectionnez une date", input_html: { class: "search-input form-control", data: { controller: "datepicker", input_target: "date" } }, required: false %>
+      </div> -->
+
+      <%= f.submit "Filtrer", class: "btn btn-primary btn-search" %>
+    <% end %>
+
+  <!-- <i class="fa-solid fa-calendar" data-input-target="btnCalendar" data-action="click->input#selectDate"></i> -->
+
+  </div>
+
+  <div style="width: 100%; height: 25vh; margin: 20px 0; border-radius: 1.5vh;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -37,3 +41,4 @@
 
 
 <%= link_to image_tag("btn_plus.png", class:"btn-action"), new_event_path %>
+<div style="padding-bottom: 7vh;"></div>
