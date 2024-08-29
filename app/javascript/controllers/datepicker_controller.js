@@ -9,7 +9,8 @@ export default class extends Controller {
   connect() {
 
     let options = {}
-    options.locale = "fr"
+    // options.locale = "fr"
+    options.disableMobile = "true"
 
     if (this.typeValue === "event") {
       const today = new Date();
