@@ -1,24 +1,24 @@
 // Specific CSS for your home-page
-.description-home {
-background-color: $bgm-beige;
-// border: solid;
-border-color: $bgm-dark-beige;
-// margin: 15px;
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-gap: 2vh;
-margin-top: 2vh;
+.home-btn {
+  margin: 15px;
+  padding: 30px;
+  background-color: $bgm-orange;
+  color: rgba(0, 0, 0, 0.955);
+  align-items: center;
+  justify-items: center;
 }
 
-.img-description {
-  background-image: url('games/Description-jeux.png');
-  color: transparent;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 4px;
+.cities{
+  margin: 15px;
+}
+#lille {
+  background-image: url('Lille.jpg');
 }
 
-#h2-title {
-margin-top: 0.4vh!important;
-margin-bottom: 0.4vh!important;
+#paris {
+  background-image: url('Paris.jpg');
+}
+
+#bordeaux {
+  background-image: url('Bordeaux.jpg');
 }
