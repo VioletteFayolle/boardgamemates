@@ -29,7 +29,7 @@
 
   <% if @events.any? %>
     <% @events.each do |event| %>
-      <%= render "events/card", event: event %>
+            <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
     <% end %>
   <% end %>
 </div>

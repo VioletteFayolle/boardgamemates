@@ -1,10 +1,14 @@
 <div class="block-margin g">
-  <%= link_to user_path(event.creator.username), class: "link_to" do %>
-    <div class="event-creator ">
-      <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
-      <p>Proposé par</p>
-      <p><%= event.creator.username %></p>
-    </div>
+  <% if show_event_creator %>
+                   <%# div creator %>
+    <%= link_to user_path(event.creator.username), class: "link_to" do %>
+      <div class="event-creator ">
+        <p>Proposé par</p>
+        <p><%= event.creator.username %></p>
+        <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
+      </div>
+    <% end %>
+                   <%# end %>
   <% end %>
     <%= link_to event_path(event), class:"link-to" do %>
   <div class="card-event">

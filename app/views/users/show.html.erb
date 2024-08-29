@@ -8,7 +8,16 @@
         </div>
         <p><%= @user.username %></p>
       </div>
-      <%= cl_image_tag(@user.photo.key, class: "avatar-large") %><i class="fa-solid fa-pen-to-square edit edit-img <%= @display %>"></i>
+      <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+
+      <div data-controller="edit">
+        <i class="fa-solid fa-pen-to-square edit edit-img <%= @display %>" data-edit-target="btn" data-action="click->edit#selectImg"></i>
+        <%= form_for @user, url: user_path(@user), html: { multipart: true, id: "edit-image-form", style: "display: none" }, data: { edit_target:"form"} do |f| %>
+          <%= f.file_field :photo, accept: 'image/*', class: 'form-control', data: { edit_target: "input", action: "change->edit#upload" } %>
+          <%= f.submit "Upload Image", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
   </div>
   <div class="informations block-margin">
     <div class="infos-color block-margin">
@@ -42,10 +51,10 @@
     <h2>Mes évèvements</h2>
   <% else %>
     <h2>Evènements de <%= @user.first_name %></h2>
-    <% @user.my_events.each do |event| %>
-      <%= render "events/card", event: event %>
-    <% end %>
   <% end %>
+    <% @user.my_events.each do |event| %>
+      <%= render partial: "events/card", locals: { event: event, show_event_creator: false } %>
+    <% end %>
 
 
     <%# <%= simple_form_for(@user) do |f| %>
@@ -53,10 +62,4 @@
     <%# <%= f.input :photo, as: :file %>
     <!-- [...] -->
     <%# <% end %>
-    <%if current_user == @user%>
-      <div class= "btn-group block-margin" >
-        <%= link_to "Mes demandes", mes_demandes_path, class: "btn-classic" %>
-        <%= link_to "Mes évènements", mes_evenements_path, class: "btn-classic" %>
-      </div>
-  <%end%>
 </div>
