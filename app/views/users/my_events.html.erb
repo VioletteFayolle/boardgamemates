@@ -1,3 +1,9 @@
+<div class= "btn-switch" >
+    <%= link_to "Mes demandes", mes_demandes_path, class: "link_to", id: "request"%>
+    <%= link_to "Mes évènements", mes_evenements_path, class: "link_to", id: "event"%>
+</div>
+
+
 <div class="bgm-container">
   <h2>Mes évènements :</h2>
   <% @my_events.each do |event| %>
