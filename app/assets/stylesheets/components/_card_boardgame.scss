@@ -14,13 +14,15 @@
     justify-content: center;
     align-items: center;
     width: 12vh;
+    background: black;
+    border-radius: 4px;
 
 
     img {
       height: 100%;
       width: 100%;
       border-radius: 4px;
-      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 1) 100%);
+      opacity: .6;
       object-fit: cover;
     }
 
@@ -29,6 +31,7 @@
       padding: 0.8vh;
       font-size: 1.2vh;
       font-weight: 500;
+      color: white;
     }
 
     .close {
