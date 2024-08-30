@@ -24,7 +24,6 @@
 }
 
 .btn-group {
-
   bottom: 7vh;
   display: flex;
   justify-content: center;
@@ -32,7 +31,6 @@
   position: fixed;
   left: 0;
   right: 0;
-
 }
 
 .infos-color {
@@ -57,4 +55,14 @@ h5 {
 
 ul {
   margin: 0 !important;
+}
+
+.user-info {
+  font-size: 1rem;
+  // font-weight: bolder;
+  text-align: center;
+
+  &:nth-child(0) {
+    padding-top: 1.2vh;
+  }
 }

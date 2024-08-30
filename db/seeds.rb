@@ -14,19 +14,19 @@ Boardgame.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', city:"Lille", age: 33, count: rand(18..40), rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', city:"Lille", age: 35, count: rand(18..40), rate: 0)
 
-User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
-User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', birth_date: '1988-05-12', count: rand(18..40), rate: 0)
-User.create!(email: 'user3@user.com', password: 'password', username: 'MoonWalker', first_name: 'Alice', last_name: 'Brown', birth_date: '1992-07-23', count: rand(18..40), rate: 0)
-User.create!(email: 'user4@user.com', password: 'password', username: 'ThunderBolt', first_name: 'Bob', last_name: 'Johnson', birth_date: '1985-10-10', count: rand(18..40), rate: 0)
-User.create!(email: 'user5@user.com', password: 'password', username: 'SilentShadow', first_name: 'Charlie', last_name: 'Williams', birth_date: '1994-03-15', count: rand(18..40), rate: 0)
-User.create!(email: 'user6@user.com', password: 'password', username: 'CrystalDream', first_name: 'Emily', last_name: 'Jones', birth_date: '1989-12-01', count: rand(18..40), rate: 0)
-User.create!(email: 'user7@user.com', password: 'password', username: 'SilverFox', first_name: 'Michael', last_name: 'Garcia', birth_date: '1987-04-20', count: rand(18..40), rate: 0)
-User.create!(email: 'user8@user.com', password: 'password', username: 'WhisperWind', first_name: 'Sophia', last_name: 'Miller', birth_date: '1991-08-17', count: rand(18..40), rate: 0)
-User.create!(email: 'user9@user.com', password: 'password', username: 'IronClad', first_name: 'Daniel', last_name: 'Davis', birth_date: '1986-11-09', count: rand(18..40), rate: 0)
-User.create!(email: 'user10@user.com', password: 'password', username: 'PhoenixFlame', first_name: 'Isabella', last_name: 'Martinez', birth_date: '1993-06-25', count: rand(18..40), rate: 0)
+User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', city:"Roubaix", age: 23, count: rand(18..40), rate: 0)
+User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', city:"Lomme", age: 26, count: rand(18..40), rate: 0)
+User.create!(email: 'user3@user.com', password: 'password', username: 'MoonWalker', first_name: 'Alice', last_name: 'Brown', city:"Tourcoing", age: 28, count: rand(18..40), rate: 0)
+User.create!(email: 'user4@user.com', password: 'password', username: 'ThunderBolt', first_name: 'Bob', last_name: 'Johnson', city:"Lille", age: 29, count: rand(18..40), rate: 0)
+User.create!(email: 'user5@user.com', password: 'password', username: 'SilentShadow', first_name: 'Charlie', last_name: 'Williams', city:"Roubaix", age: 30, count: rand(18..40), rate: 0)
+User.create!(email: 'user6@user.com', password: 'password', username: 'CrystalDream', first_name: 'Emily', last_name: 'Jones', city:"Lille", age: 28, count: rand(18..40), rate: 0)
+User.create!(email: 'user7@user.com', password: 'password', username: 'SilverFox', first_name: 'Michael', last_name: 'Garcia', city:"Lomme", age: 39, count: rand(18..40), rate: 0)
+User.create!(email: 'user8@user.com', password: 'password', username: 'WhisperWind', first_name: 'Sophia', last_name: 'Miller', city:"Wasquehal", age: 32, count: rand(18..40), rate: 0)
+User.create!(email: 'user9@user.com', password: 'password', username: 'IronClad', first_name: 'Daniel', last_name: 'Davis', city:"Wasquehal", age: 33, count: rand(18..40), rate: 0)
+User.create!(email: 'user10@user.com', password: 'password', username: 'PhoenixFlame', first_name: 'Isabella', last_name: 'Martinez', city:"Lille", age: 33, count: rand(18..40), rate: 0)
 
 puts 'Users created'
 
