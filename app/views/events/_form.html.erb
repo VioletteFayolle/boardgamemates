@@ -11,18 +11,21 @@
               as: :string,
               input_html: { data: { controller: "datepicker", datepicker_type_value: "event" } } %>
   <%= f.input :time,
+              label: "Heure",
               as: :string,
               input_html: { data: { controller: "timepicker" } } %>
   <%= render "map_form", f: f %>
 
+<div class="block-margin">
   <h2>Ajouter des jeux</h2>
+</div>
 
-  <div data-controller="autocomplete">
+  <div data-controller="autocomplete", class="block-margin">
 
     <%= f.hidden_field :boardgame_ids, value: "", data: { autocomplete_target: "boardgamesIds"} %> <!-- hidden field to store the boardgame ids -->
 
     <input type="text" data-autocomplete-target="input" data-action="keyup->autocomplete#search">
-    <ul data-autocomplete-target="results">
+    <ul data-autocomplete-target="results", style="list-style-type:none;", id="ul-form">
 
 
     </ul>
@@ -31,6 +34,7 @@
       <%# <%= console %>
     </div>
   </div>
-
+<div class=btn-classic>
   <%= f.button :submit %>
+</div>
 <% end %>
