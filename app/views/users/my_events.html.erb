@@ -1,54 +1,18 @@
+<div class= "btn-switch" >
+    <%= link_to "Mes demandes", mes_demandes_path, class: "link_to", id: "request"%>
+    <%= link_to "Mes évènements", mes_evenements_path, class: "link_to", id: "event"%>
+</div>
+
+
 <div class="bgm-container">
-  <h2>Mes évènements :</h2>
+  <h2>Mes évènements</h2>
   <% @my_events.each do |event| %>
-    <div class="card-event">
-      <%= link_to user_path(event.creator.username), class: "link_to" do %>
-        <div class="event-creator">
-          <div>
-            <p>Proposé par</p>
-            <p><%= event.creator.username %></p>
-          </div>
-          <div>
-            <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
-          </div>
-        </div>
-      <% end %>
-      <%= link_to event_path(event), class:"link-to" do %>
-        <div>
-          <h2><%= event.title %></h2>
-          <p>Description : <%= event.description %></p>
-          <p>Date : <%= event.date %></p>
-          <p>Lieu : <%= event.city %></p>
-          <p>Places : <%= event.capacity %></p>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: "events/card", locals: { event: event, show_event_creator: false } %>
   <% end %>
 
 
-  <h2>Les évènements aux quels je participe :</h2>
+  <h2>Mes inscriptions</h2>
   <% @events.each do |event| %>
-    <div class="card-event">
-      <%= link_to user_path(event.creator.username), class: "link_to" do %>
-        <div class="event-creator">
-          <div>
-            <p>Proposé par</p>
-            <p><%= event.creator.username %></p>
-          </div>
-          <div>
-            <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
-          </div>
-        </div>
-      <% end %>
-      <%= link_to event_path(event), class:"link-to" do %>
-        <div>
-          <h2><%= event.title %></h2>
-          <p>Description : <%= event.description %></p>
-          <p>Date : <%= event.date %></p>
-          <p>Lieu : <%= event.city %></p>
-          <p>Places : <%= event.capacity %></p>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
   <% end %>
 </div>

@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.home-btn {
+  margin: 15px;
+  padding: 30px;
+  background-color: $bgm-orange;
+  color: rgba(0, 0, 0, 0.955);
+  align-items: center;
+  justify-items: center;
+}
+
+.cities{
+  margin-top: 15px;
+}
+
+#lille {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Lille.jpg');
+}
+
+#paris {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Paris.jpg');
+}
+
+#bordeaux {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('Bordeaux.jpg');
+}

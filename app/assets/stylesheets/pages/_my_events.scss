@@ -1,0 +1,23 @@
+.btn-switch {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+#event {
+  text-align: center;
+  padding: 2vh;
+  background-color: $bgm-orange;
+  color: black;
+  width: 50%;
+}
+
+#request {
+  opacity: 0.5;
+  text-align: center;
+  padding: 2vh;
+  background-color: $bgm-orange;
+  color: black;
+  width: 50%;
+}

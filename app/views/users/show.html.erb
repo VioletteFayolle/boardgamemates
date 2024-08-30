@@ -1,61 +1,63 @@
 
 <div class="bgm-container">
-<div class="user-id-card">
-  <div class="full-id">
-      <div class="full-name">
-        <h5><%= @user.first_name %></h5>
-        <h5><%= @user.last_name %></h5>
+  <div class="user-id-card">
+    <div class="full-id">
+        <div class="full-name">
+          <h5><%= @user.first_name %> <%= @user.last_name %></h5>
+        </div>
+        <p><%= @user.username %></p>
       </div>
-      <p><%= @user.username %></p>
+      <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+
+      <div data-controller="edit">
+        <i class="fa-solid fa-pen-to-square edit edit-img <%= @display %>" data-edit-target="btn" data-action="click->edit#selectImg"></i>
+        <%= form_for @user, url: user_path(@user), html: { multipart: true, id: "edit-image-form", style: "display: none" }, data: { edit_target:"form"} do |f| %>
+          <%= f.file_field :photo, accept: 'image/*', class: 'form-control', data: { edit_target: "input", action: "change->edit#upload" } %>
+          <%= f.submit "Upload Image", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+  </div>
+  <div class="informations block-margin">
+    <div class="infos-color block-margin">
+      <ul>
+        <li>Membre depuis 2024 </li>
+        <li> 3 évènements créés</li>
+        <li>Participation à 5 évènements</li>
+      </ul>
     </div>
-    <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
-</div>
-<div class="informations block-margin">
-  <div class="infos-color block-margin">
-    <ul>
-      <li>Membre depuis 2024 </li>
-      <li> 3 évènements créés</li>
-      <li>Participation à 5 évènements</li>
-    </ul>
+
+    <div class="infos block-margin">
+
+      <h4 class="user-info">🎂 <%= @user.age %></h4>
+
+      <h4 class="user-info mt-4">🏠 <%= @user.city %></h4>
+
+    </div>
   </div>
-
-  <div class="infos block-margin">
-
-    <h4>24 ans</h4>
-
-    <h4>Lille</h4>
-
+  <div class="block-margin">
   </div>
-</div>
-<div class="block-margin">
-<h4>description bio</h4>
-</div>
-  <h2>Jeux préférés</h2>
-    <div class="bg-cards block-margin">
-    <% @user.my_events.first.boardgames.each do |boardgame| %>
-      <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
-        <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
+    <h2>Jeux préférés</h2>
+      <div class="bg-cards block-margin">
+      <% @user.my_events.first.boardgames.each do |boardgame| %>
+        <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
+          <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
+        <% end %>
       <% end %>
-    <% end %>
-</div>
-<%if @user == current_user%>
-  <h2>Mes évèvements</h2>
+  </div>
+  <%if @user == current_user%>
+    <h2>Mes évèvements</h2>
   <% else %>
     <h2>Evènements de <%= @user.first_name %></h2>
+  <% end %>
     <% @user.my_events.each do |event| %>
-      <%= render "events/card", event: event %>
-    <% end %>
+      <%= render partial: "events/card", locals: { event: event, show_event_creator: false } %>
     <% end %>
 
-  <%# <%= simple_form_for(@user) do |f| %>
-  <!-- [...] -->
-  <%# <%= f.input :photo, as: :file %>
-  <!-- [...] -->
-  <%# <% end %>
-  <%if current_user == @user%>
-    <div class= "btn-group block-margin" >
-      <%= link_to "Mes demandes", mes_demandes_path, class: "btn-classic" %>
-      <%= link_to "Mes évènements", mes_evenements_path, class: "btn-classic" %>
-    </div>
-<%end%>
+
+    <%# <%= simple_form_for(@user) do |f| %>
+    <!-- [...] -->
+    <%# <%= f.input :photo, as: :file %>
+    <!-- [...] -->
+    <%# <% end %>
 </div>

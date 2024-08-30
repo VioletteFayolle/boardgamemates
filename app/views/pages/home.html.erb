@@ -1,13 +1,18 @@
 <div class="banner">
   <div class="bgm-container">
     <h1>Le rendez-vous des passionnés de jeux</h1>
+
+    <div class="cities">
     <p>Que tu sois un novice mate ou un mate expert, rejoins la communauté et participe à des énèvements proche de chez toi</p>
+    </div>
+
     <%= link_to "Tous les évènements", events_path, class: "btn-banner"%>
   </div>
 </div>
 <div class="bgm-container">
-  <h1 class="h2">Catégories populaires</h1>
-
+<div class="block-margin">
+  <h2 class="h2"> Catégories populaires</h2>
+</div>
   <div class="cards">
     <div class="card-category", id="Jeux-de-plateau">
        <h3>Jeux de plateau</h3>
@@ -32,6 +37,36 @@
     <div class="card-category", id="Jeux-d'ambiance">
       <h3>Jeux d'ambiance</h3>
     </div>
+  </div>
 
+  <div class="block-margin">
+    <h2>Prochains évènements</h2>
+    <% @events.each do |event| %>
+          <%= render partial: "events/card", locals: { event: event, show_event_creator: true } %>
+    <% end %>
+  </div>
+
+  <div class="btn-classic">
+    Voir tous les événements
+  </div>
+
+  <div class="block-margin">
+   <h2 class="h2"> Explorer</h2>
+  </div>
+
+  <div class="block-margin">
+    <div class="cards">
+      <div class="card-category", id="lille">
+        <h3>Lille</h3>
+      </div>
+
+      <div class="card-category", id="paris">
+        <h3>Paris</h3>
+      </div>
+
+      <div class="card-category", id="bordeaux">
+        <h3>Bordeaux</h3>
+      </div>
+    </div>
   </div>
 </div>

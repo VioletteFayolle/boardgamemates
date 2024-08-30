@@ -1,22 +1,36 @@
-<div class="block-margin g">
-  <%= link_to user_path(event.creator.username), class: "link_to" do %>
-    <div class="event-creator ">
-      <%= cl_image_tag(event.creator.photo.key, class: "avatar") %>
-      <p>Proposé par</p>
-      <p><%= event.creator.username %></p>
-    </div>
-  <% end %>
-    <%= link_to event_path(event), class:"link-to" do %>
-  <div class="card-event">
-      <div class="title">
-        <h2><%= event.title %></h2>
-      </div>
-      <div class="elements">
-        <div><span><%= event.capacity %> </span><i class="fa-solid fa-user-group"></i></div>
-        <div><span> <%= event.date %> </span><i class="fa-solid fa-calendar"></i></div>
-        <div><span> <%= event.city %> </span><i class="fa-solid fa-location-dot"></i></div>
+<div class="block-margin">
 
+
+    <div class="card-event">
+      <%= link_to event_path(event), class:"link-to" do %>
+        <div class='event-infos'>
+          <div class="title">
+            <h2><%= event.title %></h2>
+          </div>
+        </div>
+        <div class="elements">
+            <h4><i class="fa-solid fa-user-group"></i> <%= event.capacity %></h4>
+            <h4><i class="fa-solid fa-calendar"></i>  <%= event.date.strftime("%d-%m-%y") %></h4>
+            <h4><i class="fa-solid fa-location-dot"></i>  <%= event.city %></h4>
+          </div>
+      <% end %>
+
+    <div class="bg-cards">
+      <% event.boardgames.sample(3).each do |boardgame| %>
+        <%= link_to boardgame_path(boardgame.name) ,class: "link_to" do %>
+          <%= render partial: "boardgames/card", locals: { close: false, boardgame: boardgame} %>
+        <% end %>
+      <% end %>
+    </div>
+  <% if show_event_creator %>
+                   <%# div creator %>
+    <%= link_to user_path(event.creator.username), class: "link_to" do %>
+      <div class="event-creator ">
+        <h4>Proposé par  <%= event.creator.username %></h4>
+        <%= cl_image_tag(event.creator.photo.key, class: "avatar-small") %>
       </div>
-  </div>
     <% end %>
+                   <%# end %>
+  <% end %>
+  </div>
 </div>

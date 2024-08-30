@@ -1,61 +1,138 @@
+<div class= "btn-switch" >
+    <%= link_to "Mes demandes", mes_demandes_path, class: "link_to", id: "requests"%>
+    <%= link_to "Mes évènements", mes_evenements_path, class: "link_to", id: "events"%>
+</div>
+
 <div class="bgm-container">
-  <h1>Mes demandes d'inscription</h1>
 
 
-  <h2>Reçues</h2>
-  <!-- inscriptions reçues -->
-  <div style="background: white">
-    <% if @requests.empty? %>
-      <p>Aucune demande en attente</p>
-    <% else %>
-    <p>En attente :</p>
-      <% @requests.each do |request| %>
-        <p><%= request.comment %></p>
-        <%= link_to "Accepter", inscription_path(request, status: "Validée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment accepter", turbo_method: :patch} %>
-        <%= link_to "Refuser", inscription_path(request, status: "Rejetée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment refuser", turbo_method: :patch} %>
+    <div class="block-margin"><h2>Reçues</h2></div>
+    <!-- inscriptions reçues -->
+    <div class="block-margin infos">
+      <% if @requests.empty? %>
+        <p>Aucune demande en attente</p>
+      <% else %>
+      <h4>En attente</h4>
+        <% @requests.each do |request| %>
+          <div class="inscription-card">
+            <div class="title-card">
+              <h4><%= request.event.title %></h4>
+            </div>
+            <div class= "content-card">
+
+      <%= link_to user_path(request.user.username), class: "link_to" do %>
+        <div class="event-creator">
+          <div>
+            <p><%= request.user.username %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(request.user.photo.key, class: "avatar") %>
+          </div>
+        </div>
       <% end %>
-    <% end %>
-  </div>
-
-  <% if @processed_requests.present? %>
-    <div style="background: whitesmoke">
-      <p>Vos demandes traitées :</p>
-      <ul>
-        <% @processed_requests.each do |request| %>
-          <li><%= request.comment %>  =>  <%= request.status %></li>
+              <p><%= request.comment %></p>
+              <div class="btn-inscription">
+                <h4><%= link_to "Accepter", inscription_path(request, status: "Validée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment accepter", turbo_method: :patch}, id: "accept" %></h4>
+                <h4><%= link_to "Refuser", inscription_path(request, status: "Rejetée"), data: { controller: "inscriptions", turbo_confirm: "Voulez-vous vraiment refuser", turbo_method: :patch}, id: "reject" %></h4>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      <% end %>
     </div>
-  <% end %>
 
+    <% if @processed_requests.present? %>
+      <div class="block-margin">
 
+          <% @processed_requests.each do |request| %>
+<div class="inscription-card">
+            <div class="title-card">
+              <h4><%= request.event.title %></h4>
+            </div>
+            <div class= "content-card">
 
+      <%= link_to user_path(request.user.username), class: "link_to" do %>
+        <div class="event-creator">
+          <div>
+            <p><%= request.user.username %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(request.user.photo.key, class: "avatar") %>
+          </div>
+        </div>
+      <% end %>
+              <p><%= request.comment %></p>
+              <div id=<%= request.status == "Rejetée" ? "declined" : "accepted" %> class="statut"><%= request.status %></div>
+            </div>
+          </div>
 
+          <% end %>
 
-  <h2>Envoyées</h2>
-  <!-- inscriptions envoyées -->
-  <div style="background: white">
-    <% if @inscriptions.empty? %>
-      <p>Aucune demande en attente</p>
-    <% else %>
-      <p>En attente :</p>
-      <ul>
-        <% @inscriptions.each do |inscription| %>
-          <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
-        <% end %>
-      </ul>
+      </div>
     <% end %>
-  </div>
 
-  <% if @processed_inscriptions.present? %>
-    <div style="background: whitesmoke">
-      <p>Vos demandes traitées :</p>
-      <ul>
-        <% @processed_inscriptions.each do |inscription| %>
-          <li><%= inscription.comment %>  =>  <%= inscription.status %></li>
-        <% end %>
-      </ul>
+
+    <h2>Envoyées</h2>
+    <!-- inscriptions envoyées -->
+    <div class="infos block-margin">
+      <% if @inscriptions.empty? %>
+        <p>Aucune demande en attente</p>
+      <% else %>
+          <h4>En attente</h4>
+
+          <% @inscriptions.each do |inscription| %>
+<div class="inscription-card">
+            <div class="title-card">
+              <h4><%= inscription.event.title %></h4>
+            </div>
+            <div class= "content-card">
+
+      <%= link_to user_path(inscription.event.creator.username), class: "link_to" do %>
+        <div class="event-creator">
+          <div>
+            <p><%= inscription.event.creator.username %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(inscription.event.creator.photo.key, class: "avatar") %>
+          </div>
+        </div>
+      <% end %>
+              <p><%= inscription.comment %></p>
+
+            </div>
+          </div>
+          <% end %>
+
+      <% end %>
     </div>
-  <% end %>
+
+    <% if @processed_inscriptions.present? %>
+      <div>
+
+          <% @processed_inscriptions.each do |inscription| %>
+<div class="inscription-card">
+            <div class="title-card">
+              <h4><%= inscription.event.title %></h4>
+            </div>
+            <div class= "content-card">
+
+      <%= link_to user_path(inscription.event.creator.username), class: "link_to" do %>
+        <div class="event-creator">
+          <div>
+            <p><%= inscription.event.creator.username %></p>
+          </div>
+          <div>
+            <%= cl_image_tag(inscription.event.creator.photo.key, class: "avatar") %>
+          </div>
+        </div>
+      <% end %>
+              <p><%= inscription.comment %></p>
+              <div id=<%= inscription.status == "Rejetée" ? "declined" : "accepted" %> class="statut"><%= inscription.status %></div>
+            </div>
+
+          <% end %>
+
+      </div>
+    <% end %>
 
 </div>

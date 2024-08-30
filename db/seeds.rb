@@ -14,19 +14,19 @@ Boardgame.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
+User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', city:"Lille", age: 33, count: rand(18..40), rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', city:"Lille", age: 35, count: rand(18..40), rate: 0)
 
-User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', birth_date: '1990-01-01', count: rand(18..40), rate: 0)
-User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', birth_date: '1988-05-12', count: rand(18..40), rate: 0)
-User.create!(email: 'user3@user.com', password: 'password', username: 'MoonWalker', first_name: 'Alice', last_name: 'Brown', birth_date: '1992-07-23', count: rand(18..40), rate: 0)
-User.create!(email: 'user4@user.com', password: 'password', username: 'ThunderBolt', first_name: 'Bob', last_name: 'Johnson', birth_date: '1985-10-10', count: rand(18..40), rate: 0)
-User.create!(email: 'user5@user.com', password: 'password', username: 'SilentShadow', first_name: 'Charlie', last_name: 'Williams', birth_date: '1994-03-15', count: rand(18..40), rate: 0)
-User.create!(email: 'user6@user.com', password: 'password', username: 'CrystalDream', first_name: 'Emily', last_name: 'Jones', birth_date: '1989-12-01', count: rand(18..40), rate: 0)
-User.create!(email: 'user7@user.com', password: 'password', username: 'SilverFox', first_name: 'Michael', last_name: 'Garcia', birth_date: '1987-04-20', count: rand(18..40), rate: 0)
-User.create!(email: 'user8@user.com', password: 'password', username: 'WhisperWind', first_name: 'Sophia', last_name: 'Miller', birth_date: '1991-08-17', count: rand(18..40), rate: 0)
-User.create!(email: 'user9@user.com', password: 'password', username: 'IronClad', first_name: 'Daniel', last_name: 'Davis', birth_date: '1986-11-09', count: rand(18..40), rate: 0)
-User.create!(email: 'user10@user.com', password: 'password', username: 'PhoenixFlame', first_name: 'Isabella', last_name: 'Martinez', birth_date: '1993-06-25', count: rand(18..40), rate: 0)
+User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', city:"Roubaix", age: 23, count: rand(18..40), rate: 0)
+User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', city:"Lomme", age: 26, count: rand(18..40), rate: 0)
+User.create!(email: 'user3@user.com', password: 'password', username: 'MoonWalker', first_name: 'Alice', last_name: 'Brown', city:"Tourcoing", age: 28, count: rand(18..40), rate: 0)
+User.create!(email: 'user4@user.com', password: 'password', username: 'ThunderBolt', first_name: 'Bob', last_name: 'Johnson', city:"Lille", age: 29, count: rand(18..40), rate: 0)
+User.create!(email: 'user5@user.com', password: 'password', username: 'SilentShadow', first_name: 'Charlie', last_name: 'Williams', city:"Roubaix", age: 30, count: rand(18..40), rate: 0)
+User.create!(email: 'user6@user.com', password: 'password', username: 'CrystalDream', first_name: 'Emily', last_name: 'Jones', city:"Lille", age: 28, count: rand(18..40), rate: 0)
+User.create!(email: 'user7@user.com', password: 'password', username: 'SilverFox', first_name: 'Michael', last_name: 'Garcia', city:"Lomme", age: 39, count: rand(18..40), rate: 0)
+User.create!(email: 'user8@user.com', password: 'password', username: 'WhisperWind', first_name: 'Sophia', last_name: 'Miller', city:"Wasquehal", age: 32, count: rand(18..40), rate: 0)
+User.create!(email: 'user9@user.com', password: 'password', username: 'IronClad', first_name: 'Daniel', last_name: 'Davis', city:"Wasquehal", age: 33, count: rand(18..40), rate: 0)
+User.create!(email: 'user10@user.com', password: 'password', username: 'PhoenixFlame', first_name: 'Isabella', last_name: 'Martinez', city:"Lille", age: 33, count: rand(18..40), rate: 0)
 
 puts 'Users created'
 
@@ -45,22 +45,48 @@ addresses = [
   "19 Rue du Quesnoy, 59300 Valenciennes, France"
 ]
 
+titles = [
+  "Imagino-Party",
+  "Sauve Qui Peut !",
+  "Mécano-Showdown",
+  "Quêtes et Légendes",
+  "Romance et Ruses",
+  "Pioche à Gogo",
+  "Bâtisseurs en Folie",
+  "Île aux Trésors",
+  "Dé à la Mode",
+  "Guerres et Récoltes"
+]
+
+descriptions = [
+  "Plongez dans un univers où votre imagination est reine avec Dixit. Mais ce n’est pas tout, préparez-vous aussi à des intrigues romantiques avec Loveletter et des défis stratégiques avec Carcassonne !",
+  "Le monde est en péril ! Formez votre équipe pour affronter Pandemic. Ensuite, testez votre coopération avec Saboteur et poursuivez la soirée avec l'exploration de Catane.",
+  "Entrez dans une Europe alternative avec Scythe et montrez vos talents de stratège. Après cela, lancez-vous dans des quêtes épiques avec Pathfinder et terminez avec une conquête stratégique dans Catane.",
+  "Vivez des aventures inoubliables avec Pathfinder. Ensuite, complotez avec Loveletter et construisez votre empire avec Carcassonne.",
+  "Dans l’univers de Loveletter, séduisez la princesse tout en évitant les complots. Continuez avec des stratégies sournoises dans Saboteur et des combats épiques dans Scythe.",
+  "Creusez, trahissez et trouvez de l'or dans Saboteur. Ensuite, défiez vos amis avec Yams et bâtissez des villes avec Carcassonne.",
+  "Conquérez le monde médiéval avec Carcassonne. Continuez votre construction avec Catane et testez vos talents d'improvisation avec Dixit.",
+  "Explorez et colonisez avec Catane. Puis, évitez les pandémies dans Pandemic et plongez dans l'univers fantastique de Pathfinder.",
+  "Lancez les dés avec Yams pour décrocher la victoire ! Continuez avec des jeux de stratégie comme Scythe et Carcassonne.",
+  "Battez-vous pour des ressources dans Scythe. Puis, développez votre empire agricole avec Catane et plongez dans une quête héroïque avec Pathfinder."
+]
+
 10.times do |i|
   Event.create!(
-    title: "Event #{i + 1}",
-    description: "Description #{i + 1}",
+    title: titles[i],
+    description: descriptions[i],
     address: addresses[i],
-    date: (Date.today - rand(1..30)),
+    date: (Date.today + rand(1..30)),
     time: Time.now.strftime("%H:%M"),
-    capacity: rand(1..15),
+    capacity: rand(4..15),
     creator: User.all.sample  # Attribution d'un créateur aléatoire parmi les utilisateurs existants
   )
 end
 # passé
-Event.create!(title: 'Soiré Yams & Raclette', description: 'Description 1', address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
+Event.create!(title: 'Soirée Yams & Raclette', description:   "Creusez, trahissez et trouvez de l'or dans Saboteur. Ensuite, défiez vos amis avec Yams et bâtissez des villes avec Carcassonne.", address: "2 Avenue des Saules, 59160 Lille, France", date: (Date.today - rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.first)
 # a venir
 sleep(1)
-event2 = Event.create!(title: 'Soirée de zinzin en perspective !', description: 'Description 2', address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
+event2 = Event.create!(title: 'Soirée de zinzin en perspective !', description:   "Le monde est en péril ! Formez votre équipe pour affronter Pandemic. Ensuite, testez votre coopération avec Saboteur et poursuivez la soirée avec l'exploration de Catane.", address: "12 Grande rue, 59100 Roubaix, France", date: (Date.today + rand(1..30)), time: Time.new().strftime("%H:%M"), capacity: rand(1..15), creator: User.last)
 
 puts 'Events created'
 

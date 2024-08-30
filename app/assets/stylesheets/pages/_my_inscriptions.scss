@@ -1,0 +1,84 @@
+.btn-switch {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+#events {
+  text-align: center;
+  padding: 2vh;
+  background-color: $bgm-orange;
+  opacity: 0.5;
+  color: black;
+  width: 50%;
+}
+
+#requests {
+  text-align: center;
+  padding: 2vh;
+  background-color: $bgm-orange;
+  color: black;
+  width: 50%;
+}
+
+.inscription-card {
+  margin: 1vh;
+
+  .content-card {
+    background-color: white;
+    padding: 1vh;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 1vh;
+  }
+
+  .btn-inscription {
+    display: flex;
+    justify-content: center;
+    gap: 1vh;
+    margin-bottom: 1vh;
+    margin-top: 1.2vh;
+  }
+
+  .title-card {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 0.6vh;
+  }
+}
+
+#accept {
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  padding: 1vh;
+  background-color: $bgm-blue;
+  color: black;
+}
+
+#reject {
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  padding: 1vh;
+  border: 1px solid black;
+  color: black;
+}
+
+.statut {}
+
+#declined {
+  margin: 1vh;
+  max-width: 30%;
+  text-align: center;
+  background-color: $bgm-red;
+  border-radius: 4px;
+}
+
+#accepted {
+  margin: 1vh;
+  max-width: 30%;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid black;
+}
