@@ -14,8 +14,8 @@ Boardgame.destroy_all
 
 puts 'Creating Users'
 
-User.create!(email: 'user@user.com', password: 'password', username: 'user', first_name: 'User', last_name: 'User', city:"Lille", age: 33, count: rand(18..40), rate: 0)
-User.create!(email: 'owner@owner.com', password: 'password', username: 'owner', first_name: 'Owner', last_name: 'Owner', city:"Lille", age: 35, count: rand(18..40), rate: 0)
+User.create!(email: 'user@user.com', password: 'password', username: 'Sarkraf', first_name: 'Arnaud', last_name: 'Floriani', city:"Lille", age: 26, count: rand(18..40), rate: 0)
+User.create!(email: 'owner@owner.com', password: 'password', username: 'Deedee_lab', first_name: 'Violette', last_name: 'Fayolle', city:"Lille", age: 28, count: rand(18..40), rate: 0)
 
 User.create!(email: 'user1@user.com', password: 'password', username: 'LoneWolf', first_name: 'John', last_name: 'Doe', city:"Roubaix", age: 23, count: rand(18..40), rate: 0)
 User.create!(email: 'user2@user.com', password: 'password', username: 'StarGazer', first_name: 'Jane', last_name: 'Smith', city:"Lomme", age: 26, count: rand(18..40), rate: 0)
