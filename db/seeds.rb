@@ -606,3 +606,11 @@ Event.all.each do |event|
 end
 
 puts 'Boardgames_lists created'
+
+
+puts "Mise au point pour pitch"
+
+User.find_by(username: 'Sarkraf').my_events.destroy_all
+User.find_by(username: 'Sarkraf').events.destroy_all
+
+Event.find_by(city: "Dunkerque").update(creator: User.find_by(username: 'Deedee_lab'))
